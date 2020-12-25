@@ -1,0 +1,7 @@
+.navbar {
+    background-color: var(--primary-color);
+}
+
+.navbar-brand-name {
+    font-family: var(--primary-font);
+}
