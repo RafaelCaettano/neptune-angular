@@ -1,0 +1,82 @@
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+}
+
+.card {
+    background-color: transparent;
+}
+
+.card-title {
+    color: var(--primary-text-color);
+    font-weight: 700;
+}
+
+.card-body {
+    background-color: var(--secondary-bg-color);
+    border-radius: 10px;
+}
+
+.jumbotron {
+    background-image: url(http://space-facts.com/wp-content/uploads/neptune-transparent.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: 700px;
+}
+
+.jumbotron-title {
+    font-family: var(--primary-font);
+    font-size: 300%;
+    color: var(--secondary-text-color);
+    margin: 0 0 0 5%;
+}
+
+.jumbotron-text {
+    margin: 2% 0 0 5%;
+    color: var(--secondary-text-color);
+    width: 75%;
+    line-height: 40px;
+    font-size: 125%;
+}
+
+.btn {
+    padding: 15px 30px;
+    margin: 2% 0 0 5%;
+    border-radius: 5px; 
+    font-size: 100%;
+    font-family: var(--primary-font);
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    border: none;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border-color: var(--secondary-bg-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.background-opacity {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    opacity: 0.2;
+    max-height: 100%;
+    bottom: 0;
+    z-index: -1;
+}
