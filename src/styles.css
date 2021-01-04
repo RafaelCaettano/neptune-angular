@@ -1,10 +1,11 @@
 :root {
     --primary-color: #303943;
-    --secondary-color: #C0C0C0;
-    --primary-text-color: #C0C0C0;
+    --secondary-color: #4475E2;
+    --primary-text-color: #4475E2;
     --secondary-text-color: #FFFFFF;
     --tertiary-text-color: #303943;
     --primary-bg-color: #121212;
+    --secondary-bg-color: #FFFFFF;
     --primary-font: 'Righteous', cursive;
     --secondary-font: 'Roboto', sans-serif;
 }
