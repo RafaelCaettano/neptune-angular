@@ -1,0 +1,59 @@
+.form-control {
+    background: #323232;
+    border: none;
+    color: white;
+    border-radius: 5px !important;
+}
+
+.form-label {
+    color: var(--secondary-text-color);
+    margin-left: 58px;
+    font-weight: 500;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--secondary-text-color);
+    opacity: 0.5; /* Firefox */
+}
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--secondary-text-color);
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:var(--secondary-text-color);
+}
+
+input.ng-valid.ng-touched {
+    border: 2px solid var(--secondary-color);
+}
+
+input.ng-invalid.ng-touched {
+    border: 2px solid red;
+}
+
+.row {
+    margin: 0 0 0 3%;
+}
+
+.input-group-text {
+    background: transparent;
+    border: none;
+    color: var(--secondary-text-color);
+    margin: 0 10px 0 0;
+}
+
+.form-text {
+    margin: 3px 0 10px auto;
+    text-align: right;
+}
+
+.background-opacity {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    opacity: 0.2;
+    max-height: 100%;
+    bottom: 0;
+    z-index: -1;
+}

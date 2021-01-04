@@ -1,0 +1,141 @@
+<div class="container-fluid">
+
+    <img src="../../assets/img/background.jpg" alt="background" class="background-opacity">
+
+    <div class="row">
+
+        <div class="col">
+
+            <form [formGroup]="form" class="row" novalidate (ngSubmit)="register()">
+
+                <label class="form-label">Nome completo</label>
+                <div class="input-group">
+                    <span class="input-group-text"><img src="../../assets/img/icons/avatar.svg" alt="User icon" width="25px"></span>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Digite seu nome completo aqui..."
+                        formControlName="name">
+                </div>
+                <small *ngIf="!form.get('name').valid && form.get('name').touched" class="form-text text-danger">Nome inválido</small>
+                <div *ngIf="!form.get('name').touched || form.get('name').valid" style="margin: 0 0 25px 0;"></div>
+    
+                <label class="form-label">Nick</label>
+                <div class="input-group ">
+                    <span class="input-group-text"><img src="../../assets/img/icons/nick.svg" alt="User icon" width="25px"></span>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Digite seu nome de usuário aqui..."
+                        formControlName="nick">
+                </div>
+                <small *ngIf="!form.get('nick').valid && form.get('nick').touched" class="form-text text-danger">Nome inválido</small>
+                <small *ngIf="form.get('nick').valid && form.get('nick').touched" class="form-text text-success">Nome inválido</small>
+                <div *ngIf="!form.get('nick').touched" style="margin: 0 0 25px 0;"></div>
+    
+                <label class="form-label">E-mail</label>
+                    <div class="input-group ">
+                        <span class="input-group-text"><img src="../../assets/img/icons/email.svg" alt="User icon" width="25px"></span>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Digite seu e-mail aqui..."
+                            formControlName="email">
+                    </div>
+                    <small *ngIf="!form.get('email').valid && form.get('email').touched" class="form-text text-danger">Nome inválido</small>
+                    <small *ngIf="form.get('email').valid && form.get('email').touched" class="form-text text-success">Nome inválido</small>
+                    <div *ngIf="!form.get('email').touched" style="margin: 0 0 25px 0;"></div>
+
+                <div class="col-6">
+                    
+                    <label class="form-label">Telefone</label>
+                    <div class="input-group ">
+                        <span class="input-group-text"><img src="../../assets/img/icons/phone.svg" alt="User icon" width="25px"></span>
+                        <input 
+                            type="number" 
+                            class="form-control"
+                            placeholder="Digite seu número de telefone aqui..."
+                            formControlName="phone">
+                    </div>
+                    <small class="form-text text-danger">Nome inválido</small>
+
+                </div>
+
+                <div class="col-6">
+                    
+                    <label class="form-label">Telefone</label>
+                    <div class="input-group ">
+                        <span class="input-group-text"><img src="../../assets/img/icons/phone.svg" alt="User icon" width="25px"></span>
+                        <input 
+                            type="number" 
+                            class="form-control"
+                            placeholder="Digite seu número de telefone aqui..."
+                            formControlName="phone">
+                    </div>
+                    <small class="form-text text-danger">Nome inválido</small>
+
+                </div>
+    
+                <label class="form-label">Endereço</label>
+                <div class="input-group mb-3">
+                    
+                    <input 
+                        type="number" 
+                        class="form-control" 
+                        placeholder="CEP" 
+                        style="margin: 0 10px 0 0;"
+                        formControlName="cep">
+
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Endereço" 
+                        style="width: 65%;"
+                        formControlName="address">
+
+                </div>
+    
+                <div class="input-group mb-3">
+
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        style="margin: 0 10px 0 0; width: 75%;" 
+                        placeholder="Bairro"
+                        formControlName="neighborhood">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        style="margin: 0 10px 0 0;" 
+                        placeholder="UF"
+                        formControlName="uf">
+                    <input 
+                        type="number" 
+                        class="form-control" 
+                        placeholder="nº"
+                        formControlName="number">
+
+                </div>
+    
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Complemento"
+                        formControlName="complement">
+                </div>
+                <small class="form-text text-danger">Nome inválido</small>
+
+                <button type="submit">Teste</button>
+                
+            </form>
+            
+        </div>
+       
+        <div class="col">
+
+        </div>
+
+    </div>
+
+</div>
