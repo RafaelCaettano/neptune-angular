@@ -1,7 +1,64 @@
 .navbar {
-    background-color: var(--primary-color);
+    background-color: transparent;
 }
 
 .navbar-brand-name {
     font-family: var(--primary-font);
+}
+
+.nav-link {
+    padding: 0;
+    font-weight: 500;
+}
+
+.link-icon {
+    visibility: hidden;
+    width: 0px;
+    margin: 0 0 0 5px;
+}
+
+.active {
+    background-color: var(--secondary-color);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.active > img {
+    visibility: visible;
+    width: 25px;
+}
+
+.nav-item {
+    cursor: pointer;
+}
+
+.navbar-toggler {
+    border: none;
+    outline-width: 0px;
+}
+
+.navbar-toggler:focus {
+    outline-width: 0px;
+}
+
+.profile-button {
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+}
+
+.profile-button:focus {
+    outline: thin dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: 0px;
+}
+
+.dropdown-menu {
+    margin: 43px 0 0 auto;
+}
+
+.dropstart{
+    margin: 0 0 0 auto;
 }
