@@ -34,100 +34,119 @@
                 <div *ngIf="!form.get('nick').touched" style="margin: 0 0 25px 0;"></div>
     
                 <label class="form-label">E-mail</label>
-                    <div class="input-group ">
-                        <span class="input-group-text"><img src="../../assets/img/icons/email.svg" alt="User icon" width="25px"></span>
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Digite seu e-mail aqui..."
-                            formControlName="email">
-                    </div>
-                    <small *ngIf="!form.get('email').valid && form.get('email').touched" class="form-text text-danger">Nome inválido</small>
-                    <small *ngIf="form.get('email').valid && form.get('email').touched" class="form-text text-success">Nome inválido</small>
-                    <div *ngIf="!form.get('email').touched" style="margin: 0 0 25px 0;"></div>
-
-                <div class="col-6">
-                    
-                    <label class="form-label">Telefone</label>
-                    <div class="input-group ">
-                        <span class="input-group-text"><img src="../../assets/img/icons/phone.svg" alt="User icon" width="25px"></span>
-                        <input 
-                            type="number" 
-                            class="form-control"
-                            placeholder="Digite seu número de telefone aqui..."
-                            formControlName="phone">
-                    </div>
-                    <small class="form-text text-danger">Nome inválido</small>
-
-                </div>
-
-                <div class="col-6">
-                    
-                    <label class="form-label">Telefone</label>
-                    <div class="input-group ">
-                        <span class="input-group-text"><img src="../../assets/img/icons/phone.svg" alt="User icon" width="25px"></span>
-                        <input 
-                            type="number" 
-                            class="form-control"
-                            placeholder="Digite seu número de telefone aqui..."
-                            formControlName="phone">
-                    </div>
-                    <small class="form-text text-danger">Nome inválido</small>
-
-                </div>
-    
-                <label class="form-label">Endereço</label>
-                <div class="input-group mb-3">
-                    
-                    <input 
-                        type="number" 
-                        class="form-control" 
-                        placeholder="CEP" 
-                        style="margin: 0 10px 0 0;"
-                        formControlName="cep">
-
+                <div class="input-group ">
+                    <span class="input-group-text"><img src="../../assets/img/icons/email.svg" alt="User icon" width="25px"></span>
                     <input 
                         type="text" 
                         class="form-control" 
-                        placeholder="Endereço" 
-                        style="width: 65%;"
+                        placeholder="Digite seu e-mail aqui..."
+                        formControlName="email">
+                </div>
+                <small *ngIf="!form.get('email').valid && form.get('email').touched" class="form-text text-danger">Nome inválido</small>
+                <small *ngIf="form.get('email').valid && form.get('email').touched" class="form-text text-success">Nome inválido</small>
+                <div *ngIf="!form.get('email').touched" style="margin: 0 0 25px 0;"></div>
+
+                <div class="col-6">
+                    
+                    <label class="form-label">Telefone</label>
+                    <div class="input-group ">
+                        <span class="input-group-text"><img src="../../assets/img/icons/phone.svg" alt="User icon" width="25px"></span>
+                        <input 
+                            type="number" 
+                            class="form-control"
+                            placeholder="Digite seu número de telefone aqui..."
+                            formControlName="phone">
+                    </div>
+                    <div *ngIf="!form.get('phone').touched" style="margin: 0 0 25px 0;"></div>
+                    <div *ngIf="form.get('phone').valid && form.get('phone').touched" style="margin: 0 0 25px 0;"></div>
+                    <small *ngIf="!form.get('phone').valid && form.get('phone').touched" class="form-text text-danger">Nome inválido</small>
+
+                </div>
+
+                <div class="col-6">
+                    
+                    <label class="form-label">Data de nascimento</label>
+                    <div class="input-group ">
+                        <span class="input-group-text"><img src="../../assets/img/icons/date.svg" alt="User icon" width="25px"></span>
+                        <input 
+                            type="number" 
+                            class="form-control"
+                            placeholder="Digite seu número de telefone aqui..."
+                            formControlName="date">
+                    </div>
+                    <div *ngIf="!form.get('date').touched" style="margin: 0 0 25px 0;"></div>
+
+                </div>
+
+                <div class="col-4" style="padding-right: 0;">
+    
+                    <label class="form-label">CEP</label>
+                    <div class="input-group ">
+                        <span class="input-group-text"><img src="../../assets/img/icons/place.svg" alt="User icon" width="25px"></span>
+                        <input 
+                            type="number" 
+                            class="form-control margin-right" 
+                            placeholder="CEP" 
+                            formControlName="cep">
+                    </div>
+                    <div style="margin: 0 0 25px 0;"></div>
+
+                </div>
+
+                <div class="col-8" style="padding-left: 0;">
+    
+                    <label class="form-label" style="margin-left: 0;">Rua</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
                         formControlName="address">
-
+                    <div *ngIf="!form.get('address').touched" style="margin: 0 0 25px 0;"></div>
+                    
                 </div>
+                
+                <div class="col-6 margin-right" style="padding: 0 0 0 70px;">
     
-                <div class="input-group mb-3">
-
+                    <label class="form-label" style="margin-left: 0;">Bairro</label>
                     <input 
                         type="text" 
-                        class="form-control" 
-                        style="margin: 0 10px 0 0; width: 75%;" 
-                        placeholder="Bairro"
+                        class="form-control"
                         formControlName="neighborhood">
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        style="margin: 0 10px 0 0;" 
-                        placeholder="UF"
-                        formControlName="uf">
+                    <div *ngIf="!form.get('neighborhood').touched" style="margin: 0 0 25px 0;"></div>
+                    
+                </div>
+                
+                <div class="col-3 margin-right" style="padding: 0 0 0 0;">
+    
+                    <label class="form-label" style="margin-left: 0;">Número</label>
                     <input 
                         type="number" 
                         class="form-control" 
-                        placeholder="nº"
                         formControlName="number">
-
+                    
+                </div>
+                
+                <div class="col" style="padding: 0 0 0 0;">
+    
+                    <label class="form-label" style="margin-left: 0;">UF</label>
+                    <input 
+                        type="text" 
+                        class="form-control"
+                        style="width: 90%;" 
+                        formControlName="uf">
+                    
                 </div>
     
-                <div class="input-group">
+                <label class="form-label" style="margin-left: 0; padding: 0 0 0 70px;">Complemento</label>
+                <div class="input-group" style="padding: 0 0 0 70px;">
+
                     <input 
                         type="text" 
                         class="form-control" 
-                        placeholder="Complemento"
+                        placeholder="Digite o complemento aqui..."
                         formControlName="complement">
                 </div>
                 <small class="form-text text-danger">Nome inválido</small>
 
-                <button type="submit">Teste</button>
-                
             </form>
             
         </div>

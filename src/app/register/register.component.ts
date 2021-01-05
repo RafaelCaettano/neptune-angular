@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
 		phone: new FormControl(null, [ Validators.required, Validators.minLength(11), Validators.maxLength(11) ]),
 		nick: new FormControl(null, [ Validators.required, Validators.minLength(4), Validators.maxLength(120) ]),
 		cep: new FormControl(null, [ Validators.required, Validators.minLength(8), Validators.maxLength(8) ]),
+		date: new FormControl(null, [ Validators.required ]),
 		address: new FormControl({ value: null, disabled: true }),
 		neighborhood: new FormControl({ value: null, disabled: true }),
 		uf: new FormControl({ value: null, disabled: true }),
