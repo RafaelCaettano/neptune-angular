@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Address } from '../shared/models/address.model';
+import { AddressService } from '../shared/services/address.service';
 
 @Component({
 	selector: 'app-register',
 	templateUrl: './register.component.html',
-	styleUrls: ['./register.component.css']
+	styleUrls: ['./register.component.css'],
+	providers: [AddressService]
 })
 export class RegisterComponent implements OnInit {
 
+	addressService: AddressService;
 	form: FormGroup = new FormGroup({
 		name: new FormControl(null, [ Validators.required, Validators.minLength(4), Validators.maxLength(120) ]),
 		email: new FormControl(null, [ Validators.required, Validators.minLength(4), Validators.maxLength(120) ]),
@@ -22,7 +26,9 @@ export class RegisterComponent implements OnInit {
 		complement: new FormControl(null, [ Validators.maxLength(120) ]),
 	});
 
-	constructor() { }
+	constructor(addressService: AddressService) { 
+		this.addressService = addressService;
+	}
 
 	ngOnInit(): void {
 	}
@@ -30,6 +36,18 @@ export class RegisterComponent implements OnInit {
 	register() : void {
 
 		console.log(this.form)
+
+	}
+
+	searchCEP(cep: string) {
+	
+		if(cep.length === 8) {
+			this.addressService.getAddress(cep).subscribe( (address: Address) => {
+				this.form.patchValue({ 'neighborhood': address.bairro })
+				this.form.patchValue({ 'address': `${address.logradouro}, ${address.localidade}` })
+				this.form.patchValue({ 'uf': address.uf })
+			} )
+		}
 
 	}
 

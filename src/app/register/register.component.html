@@ -87,7 +87,9 @@
                             type="number" 
                             class="form-control margin-right" 
                             placeholder="CEP" 
-                            formControlName="cep">
+                            formControlName="cep"
+                            #CEPInput
+                            (input)="searchCEP(CEPInput.value)">
                     </div>
                     <div style="margin: 0 0 25px 0;"></div>
 
@@ -95,7 +97,7 @@
 
                 <div class="col-8" style="padding-left: 0;">
     
-                    <label class="form-label" style="margin-left: 0;">Rua</label>
+                    <label class="form-label" style="margin-left: 0;">Rua e Cidade</label>
                     <input 
                         type="text" 
                         class="form-control" 
