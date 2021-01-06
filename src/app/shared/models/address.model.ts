@@ -1,10 +1,10 @@
 export class Address {
 
     cep: string;
-    street: string;
-    neighborhood: string;
+    logradouro: string;
+    complemento: string;
+    bairro: string;
+    localidade: string;
     uf: string;
-    number: string;
-    complement: string;
 
 }
