@@ -1,6 +1,5 @@
 <div class="container-fluid">
 
-    <img src="../../assets/img/background.jpg" alt="background" class="background-opacity">
     <div class="row">
 
         <div class="col d-flex flex-column">
@@ -12,19 +11,21 @@
                 <label class="form-label">Nome completo</label>
                 <div class="input-group">
                     <span class="input-group-text"><img src="../../assets/img/icons/avatar.svg" alt="User icon" width="25px"></span>
+                
                     <input 
-                        id="name"
+                        id="name" 
                         type="text" 
-                        data-inputmask="'mask': '9999 9999 9999 9999'"
                         class="form-control" 
                         placeholder="Digite seu nome completo aqui..."
                         formControlName="name">
+                
                 </div>
 
-                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="form-text text-danger">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)">
                 
-                    <small *ngIf="name.errors.maxlength" class="form-text text-danger">O nome pode ter no máximo 120 caracteres</small>
-                    <small *ngIf="name.errors.required" class="form-text text-danger">Você precisa preencher o nome</small>
+                    <small *ngIf="name.errors.maxlength" class="form-text text-danger">O nome pode ter no máximo 120 caracteres.</small>
+                    <small *ngIf="name.errors.minlength" class="form-text text-danger">O nome tem que ter no minimo 4 caracteres.</small>
+                    <small *ngIf="name.errors.required" class="form-text text-danger">O nome é obrigatório.</small>
 
                 </div>
     
@@ -40,9 +41,9 @@
 
                 <div *ngIf="nick.invalid && (nick.dirty || nick.touched)">
                 
-                    <small *ngIf="nick.errors.maxlength" class="form-text text-danger">O nickname pode ter no máximo 120 caracteres</small>
-                    <small *ngIf="nick.errors.required" class="form-text text-danger">Você precisa preencher o nickname</small>
-                    <small *ngIf="nick.errors.minlength" class="form-text text-danger">O nickname precisa ter no minimo 4 caracteres</small>
+                    <small *ngIf="nick.errors.maxlength" class="form-text text-danger">O nickname pode ter no máximo 120 caracteres.</small>
+                    <small *ngIf="nick.errors.required" class="form-text text-danger">O nickname é obrigatório.</small>
+                    <small *ngIf="nick.errors.minlength" class="form-text text-danger">O nickname precisa ter no minimo 4 caracteres.</small>
 
                 </div>
                 <small *ngIf="nick.valid" class="form-text text-success">Nickname válido</small>
@@ -59,8 +60,43 @@
 
                 <div *ngIf="email.invalid && (email.dirty || email.touched)">
                 
-                    <small *ngIf="email.errors.maxlength" class="form-text text-danger">O email pode ter no máximo 120 caracteres</small>
-                    <small *ngIf="email.errors.required" class="form-text text-danger">Você precisa preencher o email</small>
+                    <small *ngIf="email.errors.maxlength" class="form-text text-danger">O email pode ter no máximo 120 caracteres.</small>
+                    <small *ngIf="email.errors.required" class="form-text text-danger">O email é obrigatório.</small>
+                    <small *ngIf="email.errors.pattern" class="form-text text-danger">Digite um e-mail válido.</small>
+
+                </div>
+    
+                <label class="form-label">Senha</label>
+                <div class="input-group ">
+                    <span class="input-group-text"><img src="../../assets/img/icons/password.svg" alt="User icon" width="25px"></span>
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        placeholder="Digite sua senha aqui..."
+                        formControlName="password">
+                </div>
+
+                <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                
+                    <small *ngIf="password.errors.minlength" class="form-text text-danger">A senha tem que ter no minimo 8 caracteres.</small>
+                    <small *ngIf="password.errors.required" class="form-text text-danger">A senha é obrigatória.</small>
+
+                </div>
+    
+                <label class="form-label">Confirme sua senha</label>
+                <div class="input-group ">
+                    <span class="input-group-text"><img src="../../assets/img/icons/password.svg" alt="User icon" width="25px"></span>
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        placeholder="Digite sua senha aqui..."
+                        formControlName="passwordConference">
+                </div>
+
+                <div *ngIf="passwordConference.invalid && (passwordConference.dirty || passwordConference.touched)">
+                
+                    <small *ngIf="passwordConference.errors.passConference" class="form-text text-danger">As senhas são diferentes.</small>
+                    <small *ngIf="passwordConference.errors.required" class="form-text text-danger">Confirmar a sua senha é obrigatório.</small>
 
                 </div>
 
@@ -70,12 +106,20 @@
                     <div class="input-group ">
                         <span class="input-group-text"><img src="../../assets/img/icons/phone.svg" alt="User icon" width="25px"></span>
                         <input 
-                            type="number" 
+                            type="phone" 
                             class="form-control"
                             placeholder="Digite seu número de telefone aqui..."
                             formControlName="phone">
                     </div>
-                    <small *ngIf="!form.get('phone').valid && form.get('phone').touched" class="form-text text-danger">Nome inválido</small>
+
+                    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                    
+                        <small *ngIf="phone.errors.required" class="form-text text-danger">O telefone é obrigatório.</small>
+                        <small *ngIf="phone.errors.pattern" class="form-text text-danger">Digite um telefone válido.</small>
+                        <small *ngIf="phone.errors.maxlength && !phone.errors.pattern" class="form-text text-danger">O telefone pode ter no máximo 11 caracteres.</small>
+                        <small *ngIf="phone.errors.minlength" class="form-text text-danger">O telefone tem que ter no minimo 11 caracteres.</small>
+    
+                    </div>
 
                 </div>
 
@@ -92,18 +136,34 @@
 
                 </div>
 
+                <div *ngIf="date.invalid && (date.dirty || date.touched)">
+                
+                    <small *ngIf="date.errors.required" class="form-text text-danger">A data de nascimento é obrigatória.</small>
+
+                </div>
+
                 <div class="col-4" style="padding-right: 0;">
     
                     <label class="form-label">CEP</label>
                     <div class="input-group ">
                         <span class="input-group-text"><img src="../../assets/img/icons/place.svg" alt="User icon" width="25px"></span>
                         <input 
-                            type="number" 
+                            type="text" 
                             class="form-control margin-right" 
                             placeholder="CEP" 
                             formControlName="cep"
                             #CEPInput
                             (input)="searchCEP(CEPInput.value)">
+                    </div>
+
+                    <div *ngIf="cep.invalid && (cep.dirty || cep.touched)">
+                    
+                        <small *ngIf="cep.errors.required" class="form-text text-danger">O CEP é obrigatório.</small>
+                        <small *ngIf="cep.errors.cepError" class="form-text text-danger">Digite um CEP válido.</small>
+                        <small *ngIf="cep.errors.pattern" class="form-text text-danger">Digite um CEP válido.</small>
+                        <small *ngIf="cep.errors.maxlength" class="form-text text-danger">O CEP pode ter no máximo 8 caracteres.</small>
+                        <small *ngIf="cep.errors.minlength" class="form-text text-danger">O CEP tem que ter no minimo 8 caracteres.</small>
+    
                     </div>
 
                 </div>
@@ -135,6 +195,14 @@
                         type="number" 
                         class="form-control" 
                         formControlName="number">
+
+                    <div *ngIf="number.invalid && (number.dirty || number.touched)">
+                        
+                        <small *ngIf="number.errors.required" class="form-text text-danger">O número é obrigatório.</small>
+                        <small *ngIf="number.errors.pattern" class="form-text text-danger">Digite um número válido.</small>
+                        <small *ngIf="number.errors.maxlength" class="form-text text-danger">O número pode ter no máximo 8 caracteres.</small>
+        
+                    </div>
                     
                 </div>
                 
@@ -160,7 +228,13 @@
                             placeholder="Digite o complemento aqui..."
                             formControlName="complement">
                     </div>
-                    <small class="form-text text-danger">Nome inválido</small>
+
+                    <div *ngIf="complement.invalid && (complement.dirty || complement.touched)">
+                    
+                        <small *ngIf="complement.errors.maxlength" class="form-text text-danger">O complemento pode ter no máximo 120 caracteres.</small>
+    
+                    </div>
+
                 </div>
 
                 <div class="row justify-content-end">

@@ -14,3 +14,16 @@ body {
     font-family: var(--secondary-font);
     background-color: var(--primary-bg-color);
 }
+html, body { height: 100%; }
+
+::-webkit-scrollbar-track {
+    background-color: var(--primary-bg-color)
+}
+::-webkit-scrollbar {
+    width: 10px;
+    background: var(--primary-bg-color)
+}
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
