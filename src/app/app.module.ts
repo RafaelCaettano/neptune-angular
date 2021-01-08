@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterErrorComponent } from './register/register-error/register-error.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     HomeComponent,
     NewsComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterErrorComponent
   ],
   imports: [
     BrowserModule,
