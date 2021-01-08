@@ -2,23 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Address } from '../shared/models/address.model';
 import { AddressService } from '../shared/services/address.service';
+import { UserService } from '../shared/services/user.service';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { MyValidators } from './validator';
+import { MyValidators } from './myValidators';
+import { User } from '../shared/models/user.model';
 
 @Component({
 	selector: 'app-register',
 	templateUrl: './register.component.html',
 	styleUrls: ['./register.component.css'],
-	providers: [AddressService]
+	providers: [AddressService, UserService]
 })
 export class RegisterComponent implements OnInit {
 
 	addressService: AddressService;
+	userService: UserService;
 	form: FormGroup;
 	model: NgbDateStruct;
 
-	constructor(addressService: AddressService, private fb: FormBuilder) { 
+	constructor(addressService: AddressService, userService: UserService, private fb: FormBuilder) { 
 		this.addressService = addressService;
+		this.userService = userService;
 	}
 
 	ngOnInit(): void {
@@ -44,11 +48,31 @@ export class RegisterComponent implements OnInit {
 
 	}
 
-		
+	register(): void {
 
-	register() : void {
+		const formData = this.form.value;
 
-		console.log(this.form.get('phone'))
+		if(this.searchEmail(formData.email)) {
+
+			let user = new User();
+			user.name = formData.name;
+			user.email = formData.email;
+			user.nickname = formData.nick;
+			user.phone = formData.phone;
+			user.date = formData.date;
+			user.address = new Address();
+			user.address.bairro = formData.neighborhood;
+			user.address.uf = formData.uf;
+			user.address.logradouro = formData.address;
+			user.address.number = formData.number;
+			user.address.cep = formData.cep;
+			user.address.complemento = formData.complement;
+
+			this.userService.createUser(user).subscribe(
+				(res) => { console.log('Sucesso') }
+			)
+
+		}
 
 	}
 
@@ -63,7 +87,7 @@ export class RegisterComponent implements OnInit {
 	get complement() { return this.form.get('complement'); }
 	get number() { return this.form.get('number'); }
 	
-	searchCEP(cep: string) {
+	searchCEP(cep: string): void {
 	
 		if(cep.length === 8) {
 			this.addressService.getAddress(cep).subscribe( (address: Address) => {
@@ -78,6 +102,36 @@ export class RegisterComponent implements OnInit {
 				}
 			})
 		}
+
+	}
+
+	searchNick(nick: string) {
+
+		this.userService.nickRegistered(nick).subscribe( (user: User[]) => {
+
+			console.log(user)
+			if(user.length > 0) {
+				console.log("twste")
+				this.nick.setErrors({ nickRegistered: true });
+			}
+
+		})
+
+	}
+
+	searchEmail(email: string): boolean {
+
+		let user: User[];
+		this.userService.emailRegistered(email).subscribe( (userData: User[]) => {
+			user = userData;
+		})
+		return !(user.length > 0)
+
+	}
+
+	registerUser(user: User) {
+
+
 
 	}
 

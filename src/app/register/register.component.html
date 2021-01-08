@@ -34,7 +34,9 @@
                     <span class="input-group-text"><img src="../../assets/img/icons/nick.svg" alt="User icon" width="25px"></span>
                     <input 
                         type="text" 
+                        #nickInput
                         class="form-control" 
+                        (blur)="searchNick(nickInput.value)"
                         placeholder="Digite seu nome de usuário aqui..."
                         formControlName="nick">
                 </div>
@@ -43,6 +45,7 @@
                 
                     <small *ngIf="nick.errors.maxlength" class="form-text text-danger">O nickname pode ter no máximo 120 caracteres.</small>
                     <small *ngIf="nick.errors.required" class="form-text text-danger">O nickname é obrigatório.</small>
+                    <small *ngIf="nick.errors.nickRegistered" class="form-text text-danger">Nickname já registrado.</small>
                     <small *ngIf="nick.errors.minlength" class="form-text text-danger">O nickname precisa ter no minimo 4 caracteres.</small>
 
                 </div>
@@ -239,7 +242,7 @@
 
                 <div class="row justify-content-end">
                     <button class="secondary-btn form-button" type="reset">Limpar</button>
-                    <button class="primary-btn form-button" type="submit" >Enviar</button>
+                    <button class="primary-btn form-button" [disabled]="!form.valid" type="submit" >Enviar</button>
                 </div>
 
             </form>
