@@ -1,10 +1,11 @@
 <div class="container-fluid">
 
     <img src="../../assets/img/background.jpg" alt="background" class="background-opacity">
-
     <div class="row">
 
-        <div class="col">
+        <div class="col d-flex flex-column">
+
+            <button class="photo-button"><img src="../../assets/img/icons/user.svg" alt="Botão de escolher foto" width="200px"></button>
 
             <form [formGroup]="form" class="row" novalidate (ngSubmit)="register()">
 
@@ -12,13 +13,20 @@
                 <div class="input-group">
                     <span class="input-group-text"><img src="../../assets/img/icons/avatar.svg" alt="User icon" width="25px"></span>
                     <input 
+                        id="name"
                         type="text" 
+                        data-inputmask="'mask': '9999 9999 9999 9999'"
                         class="form-control" 
                         placeholder="Digite seu nome completo aqui..."
                         formControlName="name">
                 </div>
-                <small *ngIf="!form.get('name').valid && form.get('name').touched" class="form-text text-danger">Nome inválido</small>
-                <div *ngIf="!form.get('name').touched || form.get('name').valid" style="margin: 0 0 25px 0;"></div>
+
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="form-text text-danger">
+                
+                    <small *ngIf="name.errors.maxlength" class="form-text text-danger">O nome pode ter no máximo 120 caracteres</small>
+                    <small *ngIf="name.errors.required" class="form-text text-danger">Você precisa preencher o nome</small>
+
+                </div>
     
                 <label class="form-label">Nick</label>
                 <div class="input-group ">
@@ -29,9 +37,15 @@
                         placeholder="Digite seu nome de usuário aqui..."
                         formControlName="nick">
                 </div>
-                <small *ngIf="!form.get('nick').valid && form.get('nick').touched" class="form-text text-danger">Nome inválido</small>
-                <small *ngIf="form.get('nick').valid && form.get('nick').touched" class="form-text text-success">Nome inválido</small>
-                <div *ngIf="!form.get('nick').touched" style="margin: 0 0 25px 0;"></div>
+
+                <div *ngIf="nick.invalid && (nick.dirty || nick.touched)">
+                
+                    <small *ngIf="nick.errors.maxlength" class="form-text text-danger">O nickname pode ter no máximo 120 caracteres</small>
+                    <small *ngIf="nick.errors.required" class="form-text text-danger">Você precisa preencher o nickname</small>
+                    <small *ngIf="nick.errors.minlength" class="form-text text-danger">O nickname precisa ter no minimo 4 caracteres</small>
+
+                </div>
+                <small *ngIf="nick.valid" class="form-text text-success">Nickname válido</small>
     
                 <label class="form-label">E-mail</label>
                 <div class="input-group ">
@@ -42,9 +56,13 @@
                         placeholder="Digite seu e-mail aqui..."
                         formControlName="email">
                 </div>
-                <small *ngIf="!form.get('email').valid && form.get('email').touched" class="form-text text-danger">Nome inválido</small>
-                <small *ngIf="form.get('email').valid && form.get('email').touched" class="form-text text-success">Nome inválido</small>
-                <div *ngIf="!form.get('email').touched" style="margin: 0 0 25px 0;"></div>
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                
+                    <small *ngIf="email.errors.maxlength" class="form-text text-danger">O email pode ter no máximo 120 caracteres</small>
+                    <small *ngIf="email.errors.required" class="form-text text-danger">Você precisa preencher o email</small>
+
+                </div>
 
                 <div class="col-6">
                     
@@ -57,24 +75,20 @@
                             placeholder="Digite seu número de telefone aqui..."
                             formControlName="phone">
                     </div>
-                    <div *ngIf="!form.get('phone').touched" style="margin: 0 0 25px 0;"></div>
-                    <div *ngIf="form.get('phone').valid && form.get('phone').touched" style="margin: 0 0 25px 0;"></div>
                     <small *ngIf="!form.get('phone').valid && form.get('phone').touched" class="form-text text-danger">Nome inválido</small>
 
                 </div>
 
                 <div class="col-6">
                     
-                    <label class="form-label">Data de nascimento</label>
+                    <label class="form-label" style="margin-left: 0;">Data de nascimento</label>
                     <div class="input-group ">
-                        <span class="input-group-text"><img src="../../assets/img/icons/date.svg" alt="User icon" width="25px"></span>
-                        <input 
-                            type="number" 
-                            class="form-control"
-                            placeholder="Digite seu número de telefone aqui..."
+                        <input class="form-control" placeholder="yyyy-mm-dd"
+                            name="dp" [(ngModel)]="model" 
+                            ngbDatepicker #d="ngbDatepicker"
                             formControlName="date">
+                        <span class="input-group-text"><img (click)="d.toggle()" src="../../assets/img/icons/date.svg" alt="User icon" width="25px"></span>
                     </div>
-                    <div *ngIf="!form.get('date').touched" style="margin: 0 0 25px 0;"></div>
 
                 </div>
 
@@ -91,7 +105,6 @@
                             #CEPInput
                             (input)="searchCEP(CEPInput.value)">
                     </div>
-                    <div style="margin: 0 0 25px 0;"></div>
 
                 </div>
 
@@ -102,7 +115,6 @@
                         type="text" 
                         class="form-control" 
                         formControlName="address">
-                    <div *ngIf="!form.get('address').touched" style="margin: 0 0 25px 0;"></div>
                     
                 </div>
                 
@@ -113,7 +125,6 @@
                         type="text" 
                         class="form-control"
                         formControlName="neighborhood">
-                    <div *ngIf="!form.get('neighborhood').touched" style="margin: 0 0 25px 0;"></div>
                     
                 </div>
                 
@@ -138,22 +149,44 @@
                     
                 </div>
     
-                <label class="form-label" style="margin-left: 0; padding: 0 0 0 70px;">Complemento</label>
-                <div class="input-group" style="padding: 0 0 0 70px;">
+                <div class="col-12">
 
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        placeholder="Digite o complemento aqui..."
-                        formControlName="complement">
+                    <label class="form-label">Complemento</label>
+                    <div class="input-group" style="padding: 0 0 0 55px;">
+    
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Digite o complemento aqui..."
+                            formControlName="complement">
+                    </div>
+                    <small class="form-text text-danger">Nome inválido</small>
                 </div>
-                <small class="form-text text-danger">Nome inválido</small>
+
+                <div class="row justify-content-end">
+                    <button class="secondary-btn form-button" type="reset">Limpar</button>
+                    <button class="primary-btn form-button" type="submit" >Enviar</button>
+                </div>
 
             </form>
             
         </div>
        
-        <div class="col">
+        <div class="col col-left">
+
+            <h2 class="container-title">CADASTRO</h2>
+
+            <p class="container-paragraph">Faça o seu cadastro para poder ler todas as nossas notícias, favoritas as suas preferidas e ver todo o nosso acervo de informações sobre o espaço e as novas descoberta da ciência.</p>
+            
+            <div class="row button-row">
+
+                <button class="btn"> <img src="../../assets/img/icons/login.svg" alt="User icon" width="30px"> Login</button>
+                
+                <div class="button-separator"></div>
+
+                <p class="button-paragraph align-self-center">Faça o login caso já possua sua conta.</p>
+
+            </div>
 
         </div>
 

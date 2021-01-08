@@ -9,6 +9,7 @@
     color: var(--secondary-text-color);
     margin-left: 58px;
     font-weight: 500;
+    margin-top: 25px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -44,7 +45,7 @@ input.ng-invalid.ng-touched {
 }
 
 .form-text {
-    margin: 3px 0 10px auto;
+    margin: 3px 0 0 auto;
     text-align: right;
 }
 
@@ -53,11 +54,100 @@ input.ng-invalid.ng-touched {
     left: 0;
     width: 100%;
     opacity: 0.2;
-    max-height: 100%;
-    bottom: 0;
+    height: 1000px;
     z-index: -1;
 }
 
 .margin-right {
     margin-right: 20px;
+}
+
+.photo-button {
+    background: none;
+    border: none;
+    margin: 0 0 27px 0;
+}
+
+.photo-button:focus {
+    outline: none;
+}
+
+.container-title {
+    font-family: var(--primary-font);
+    font-size: 300%;
+    color: var(--secondary-text-color);
+    margin: 5% 0 0 0;
+}
+
+.container-paragraph {
+    font-size: 200%;
+    color: var(--secondary-text-color);
+    font-weight: 100;
+    margin: 13% 0 7% 0;
+}
+
+.col-left {
+    margin: 0 0 0 145px;
+}
+
+.btn {
+    background: var(--secondary-color);
+    border-radius: 10px;
+    font-size: 190%;    
+    color: var(--secondary-text-color);
+    padding: 17px 43px;
+    width: 40%;
+}
+
+.btn:hover {
+    background: var(--primary-color);
+}
+
+.button-row {
+    margin: 0;
+}
+
+.button-separator {
+    width: 12px;
+    background-color: var(--primary-color);
+    padding: 0;
+    margin: 0 0 0 17px;
+    border-radius: 50px;
+}
+
+.button-paragraph {
+    width: 30%;
+    color: var(--secondary-text-color);
+    margin: 0;
+}
+
+.text-success {
+    color: var(--secondary-color) !important;
+}
+
+.form-button {
+    border: none;
+    width: 25%;
+    margin: 20px 28px 0 0;
+    border-radius: 5px;
+    color: var(--secondary-text-color);
+    padding: 7px 0 7px 0;
+    transition: 0.5s;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: var(--secondary-color);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid var(--secondary-text-color);
+}
+
+.form-button:hover {
+    transition: 0.5s;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
 }
