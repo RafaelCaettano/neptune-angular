@@ -6,5 +6,6 @@ export class Address {
     bairro: string;
     localidade: string;
     uf: string;
+    number: string;
 
 }
