@@ -6,6 +6,8 @@ import { UserService } from '../shared/services/user.service';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { MyValidators } from './myValidators';
 import { User } from '../shared/models/user.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RegisterSuccessComponent } from './register-success/register-success.component';
 
 @Component({
 	selector: 'app-register',
@@ -17,10 +19,11 @@ export class RegisterComponent implements OnInit {
 
 	addressService: AddressService;
 	userService: UserService;
+	success: User[];
 	form: FormGroup;
 	model: NgbDateStruct;
 
-	constructor(addressService: AddressService, userService: UserService, private fb: FormBuilder) { 
+	constructor(addressService: AddressService, userService: UserService, private fb: FormBuilder, private modalService: NgbModal) { 
 		this.addressService = addressService;
 		this.userService = userService;
 	}
@@ -48,11 +51,17 @@ export class RegisterComponent implements OnInit {
 
 	}
 
+	open() {
+		this.modalService.open(RegisterSuccessComponent, {
+			size: 'sm'
+		});
+	}
+
 	register(): void {
 
 		const formData = this.form.value;
-
-		if(this.searchEmail(formData.email)) {
+		const registered = this.searchEmail(formData.email);
+		if(!registered) {
 
 			let user = new User();
 			user.name = formData.name;
@@ -69,7 +78,14 @@ export class RegisterComponent implements OnInit {
 			user.address.complemento = formData.complement;
 
 			this.userService.createUser(user).subscribe(
-				(res) => { console.log('Sucesso') }
+				(res) => { 
+					this.open()
+					console.log("Sucesso")
+				},
+
+				(res) => { 
+					console.log("Errou")
+				}
 			)
 
 		}
@@ -121,11 +137,11 @@ export class RegisterComponent implements OnInit {
 
 	searchEmail(email: string): boolean {
 
-		let user: User[];
-		this.userService.emailRegistered(email).subscribe( (userData: User[]) => {
-			user = userData;
+		this.success = undefined;
+		this.userService.emailRegistered(email).subscribe( (userData) => {
+			this.success = userData;
 		})
-		return !(user.length > 0)
+		return (this.success !== undefined)
 
 	}
 
