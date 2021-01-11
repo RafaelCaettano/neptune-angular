@@ -48,9 +48,9 @@ export class RegisterComponent implements OnInit {
 			date: new FormControl(null, [ Validators.required ]),
 			password: new FormControl(null, [ Validators.required, Validators.minLength(8)]),
 			passwordConference: new FormControl(null, [ Validators.required ]),
-			address: new FormControl({ value: null }),
-			neighborhood: new FormControl({ value: null }),
-			uf: new FormControl({ value: null }),
+			address: new FormControl(null),
+			neighborhood: new FormControl(null),
+			uf: new FormControl(null),
 			number: new FormControl(null, [ Validators.required, Validators.maxLength(8), Validators.pattern('[0-9]*') ]),
 			complement: new FormControl(null, [ Validators.maxLength(120) ]),
 		},
@@ -61,9 +61,10 @@ export class RegisterComponent implements OnInit {
 	}
 
 	openModalError(message: string) {
-		this.modalService.open(RegisterErrorComponent, {
+		const modalRef = this.modalService.open(RegisterErrorComponent, {
 			size: 'sm'
 		});
+    	modalRef.componentInstance.message = message;
 	}
 
 	openModalSuccess() {
@@ -72,13 +73,14 @@ export class RegisterComponent implements OnInit {
 		});
 	}
 
-	register(): void {
+	async register() {
 
 		console.log(this.form)
 		const formData = this.form.value;
-		const registered = this.searchEmail(formData.email);
-		if(!registered) {
+		let success: boolean = await this.searchEmail(formData.email);
+		console.log(success)
 
+		if(success) {
 			let user = new User();
 			user.name = formData.name;
 			user.email = formData.email;
@@ -94,19 +96,19 @@ export class RegisterComponent implements OnInit {
 			user.address.complemento = formData.complement;
 
 			this.userService.createUser(user).subscribe(
-				(res) => { 
+				(res) => {
 					this.openModalSuccess();
 				},
 
-				(error) => { 
+				(error) => {
 					this.openModalError(error);
 				}
 			)
-
 		}
 		else {
-			this.openModalError('E-mail já cadastrado!');
+			this.openModalError('E-mail já cadastrado.');
 		}
+			
 
 	}
 
@@ -143,9 +145,7 @@ export class RegisterComponent implements OnInit {
 
 		this.userService.nickRegistered(nick).subscribe( (user: User[]) => {
 
-			console.log(user)
 			if(user.length > 0) {
-				console.log("twste")
 				this.nick.setErrors({ nickRegistered: true });
 			}
 
@@ -153,13 +153,19 @@ export class RegisterComponent implements OnInit {
 
 	}
 
-	searchEmail(email: string): boolean {
+	async searchEmail(email: string): Promise<boolean> {
 
-		this.success = undefined;
-		this.userService.emailRegistered(email).subscribe( (userData) => {
-			this.success = userData;
+		let success: boolean = false;
+
+		this.userService.emailRegistered(email).subscribe( (user) => {
+			
+			if(user.length > 0) {
+				success = true
+			}
+
 		})
-		return (this.success !== undefined)
+
+		return success;
 
 	}
 
