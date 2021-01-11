@@ -66,22 +66,5 @@
     }
   ],
   "users": [
-    {
-      "name": "Rafael Caetano do Carmo",
-      "email": "rafac.docarmo@hotmail.com",
-      "nickname": "RafaelCaettano",
-      "phone": "11983100649",
-      "date": {
-        "year": 2021,
-        "month": 1,
-        "day": 17
-      },
-      "address": {
-        "number": 26,
-        "cep": "06857520",
-        "complemento": null
-      },
-      "id": 1
-    }
   ]
 }

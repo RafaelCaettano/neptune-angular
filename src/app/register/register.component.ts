@@ -1,19 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Address } from '../shared/models/address.model';
 import { AddressService } from '../shared/services/address.service';
 import { UserService } from '../shared/services/user.service';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { MyValidators } from './myValidators';
 import { User } from '../shared/models/user.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterSuccessComponent } from './register-success/register-success.component';
+import { RegisterErrorComponent } from './register-error/register-error.component';
+import { CustomAdapter } from './datePickerAdapter/customAdapter';
+import { CustomDateParserFormatter } from './datePickerAdapter/customDateParserFormatter';
 
 @Component({
 	selector: 'app-register',
 	templateUrl: './register.component.html',
 	styleUrls: ['./register.component.css'],
-	providers: [AddressService, UserService]
+	providers: [ AddressService, UserService, 
+		{ provide: NgbDateAdapter, useClass: CustomAdapter },
+		{ provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter }
+	]
 })
 export class RegisterComponent implements OnInit {
 
@@ -22,8 +28,11 @@ export class RegisterComponent implements OnInit {
 	success: User[];
 	form: FormGroup;
 	model: NgbDateStruct;
+	model1: string;
+  	model2: string;
 
-	constructor(addressService: AddressService, userService: UserService, private fb: FormBuilder, private modalService: NgbModal) { 
+
+	constructor(addressService: AddressService, userService: UserService, private fb: FormBuilder, private modalService: NgbModal, private ngbCalendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>) { 
 		this.addressService = addressService;
 		this.userService = userService;
 	}
@@ -37,11 +46,11 @@ export class RegisterComponent implements OnInit {
 			nick: new FormControl(null, [ Validators.required, Validators.minLength(4), Validators.maxLength(120) ]),
 			cep: new FormControl(null, [ Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('[0-9]*') ]),
 			date: new FormControl(null, [ Validators.required ]),
-			password: new FormControl(null, [ Validators.required, Validators.minLength(8) ]),
+			password: new FormControl(null, [ Validators.required, Validators.minLength(8)]),
 			passwordConference: new FormControl(null, [ Validators.required ]),
-			address: new FormControl({ value: null, disabled: true }),
-			neighborhood: new FormControl({ value: null, disabled: true }),
-			uf: new FormControl({ value: null, disabled: true }),
+			address: new FormControl({ value: null }),
+			neighborhood: new FormControl({ value: null }),
+			uf: new FormControl({ value: null }),
 			number: new FormControl(null, [ Validators.required, Validators.maxLength(8), Validators.pattern('[0-9]*') ]),
 			complement: new FormControl(null, [ Validators.maxLength(120) ]),
 		},
@@ -51,7 +60,13 @@ export class RegisterComponent implements OnInit {
 
 	}
 
-	open() {
+	openModalError(message: string) {
+		this.modalService.open(RegisterErrorComponent, {
+			size: 'sm'
+		});
+	}
+
+	openModalSuccess() {
 		this.modalService.open(RegisterSuccessComponent, {
 			size: 'sm'
 		});
@@ -59,6 +74,7 @@ export class RegisterComponent implements OnInit {
 
 	register(): void {
 
+		console.log(this.form)
 		const formData = this.form.value;
 		const registered = this.searchEmail(formData.email);
 		if(!registered) {
@@ -79,15 +95,17 @@ export class RegisterComponent implements OnInit {
 
 			this.userService.createUser(user).subscribe(
 				(res) => { 
-					this.open()
-					console.log("Sucesso")
+					this.openModalSuccess();
 				},
 
-				(res) => { 
-					console.log("Errou")
+				(error) => { 
+					this.openModalError(error);
 				}
 			)
 
+		}
+		else {
+			this.openModalError('E-mail já cadastrado!');
 		}
 
 	}
@@ -142,12 +160,6 @@ export class RegisterComponent implements OnInit {
 			this.success = userData;
 		})
 		return (this.success !== undefined)
-
-	}
-
-	registerUser(user: User) {
-
-
 
 	}
 
