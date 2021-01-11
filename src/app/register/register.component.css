@@ -45,8 +45,8 @@ input.ng-invalid.ng-touched {
 }
 
 .form-text {
-    margin: 3px 0 0 auto;
-    text-align: right;
+    text-align: right !important;
+    margin: 10px 0 0 0
 }
 
 .background-opacity {

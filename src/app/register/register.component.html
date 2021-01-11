@@ -21,11 +21,11 @@
                 
                 </div>
 
-                <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" style="width: 100%;">
                 
-                    <small *ngIf="name.errors.maxlength" class="form-text text-danger">O nome pode ter no máximo 120 caracteres.</small>
-                    <small *ngIf="name.errors.minlength" class="form-text text-danger">O nome tem que ter no minimo 4 caracteres.</small>
-                    <small *ngIf="name.errors.required" class="form-text text-danger">O nome é obrigatório.</small>
+                    <p *ngIf="name.errors.maxlength" class="form-text text-danger">O nome pode ter no máximo 120 caracteres.</p>
+                    <p *ngIf="name.errors.minlength" class="form-text text-danger">O nome tem que ter no minimo 4 caracteres.</p>
+                    <p *ngIf="name.errors.required" class="form-text text-danger">O nome é obrigatório.</p>
 
                 </div>
     
@@ -43,13 +43,13 @@
 
                 <div *ngIf="nick.invalid && (nick.dirty || nick.touched)">
                 
-                    <small *ngIf="nick.errors.maxlength" class="form-text text-danger">O nickname pode ter no máximo 120 caracteres.</small>
-                    <small *ngIf="nick.errors.required" class="form-text text-danger">O nickname é obrigatório.</small>
-                    <small *ngIf="nick.errors.nickRegistered" class="form-text text-danger">Nickname já registrado.</small>
-                    <small *ngIf="nick.errors.minlength" class="form-text text-danger">O nickname precisa ter no minimo 4 caracteres.</small>
+                    <p *ngIf="nick.errors.maxlength" class="form-text text-danger">O nickname pode ter no máximo 120 caracteres.</p>
+                    <p *ngIf="nick.errors.required" class="form-text text-danger">O nickname é obrigatório.</p>
+                    <p *ngIf="nick.errors.nickRegistered" class="form-text text-danger">Nickname já registrado.</p>
+                    <p *ngIf="nick.errors.minlength" class="form-text text-danger">O nickname precisa ter no minimo 4 caracteres.</p>
 
                 </div>
-                <small *ngIf="nick.valid" class="form-text text-success">Nickname válido</small>
+                <p *ngIf="nick.valid" class="form-text text-success">Nickname válido</p>
     
                 <label class="form-label">E-mail</label>
                 <div class="input-group ">
@@ -63,9 +63,9 @@
 
                 <div *ngIf="email.invalid && (email.dirty || email.touched)">
                 
-                    <small *ngIf="email.errors.maxlength" class="form-text text-danger">O email pode ter no máximo 120 caracteres.</small>
-                    <small *ngIf="email.errors.required" class="form-text text-danger">O email é obrigatório.</small>
-                    <small *ngIf="email.errors.pattern" class="form-text text-danger">Digite um e-mail válido.</small>
+                    <p *ngIf="email.errors.maxlength" class="form-text text-danger">O email pode ter no máximo 120 caracteres.</p>
+                    <p *ngIf="email.errors.required" class="form-text text-danger">O email é obrigatório.</p>
+                    <p *ngIf="email.errors.pattern" class="form-text text-danger">Digite um e-mail válido.</p>
 
                 </div>
     
@@ -81,8 +81,8 @@
 
                 <div *ngIf="password.invalid && (password.dirty || password.touched)">
                 
-                    <small *ngIf="password.errors.minlength" class="form-text text-danger">A senha tem que ter no minimo 8 caracteres.</small>
-                    <small *ngIf="password.errors.required" class="form-text text-danger">A senha é obrigatória.</small>
+                    <p *ngIf="password.errors.minlength" class="form-text text-danger">A senha tem que ter no minimo 8 caracteres.</p>
+                    <p *ngIf="password.errors.required" class="form-text text-danger">A senha é obrigatória.</p>
 
                 </div>
     
@@ -98,8 +98,8 @@
 
                 <div *ngIf="passwordConference.invalid && (passwordConference.dirty || passwordConference.touched)">
                 
-                    <small *ngIf="passwordConference.errors.passConference" class="form-text text-danger">As senhas são diferentes.</small>
-                    <small *ngIf="passwordConference.errors.required" class="form-text text-danger">Confirmar a sua senha é obrigatório.</small>
+                    <p *ngIf="passwordConference.errors.passConference" class="form-text text-danger">As senhas são diferentes.</p>
+                    <p *ngIf="passwordConference.errors.required" class="form-text text-danger">Confirmar a sua senha é obrigatório.</p>
 
                 </div>
 
@@ -117,10 +117,10 @@
 
                     <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
                     
-                        <small *ngIf="phone.errors.required" class="form-text text-danger">O telefone é obrigatório.</small>
-                        <small *ngIf="phone.errors.pattern" class="form-text text-danger">Digite um telefone válido.</small>
-                        <small *ngIf="phone.errors.maxlength && !phone.errors.pattern" class="form-text text-danger">O telefone pode ter no máximo 11 caracteres.</small>
-                        <small *ngIf="phone.errors.minlength" class="form-text text-danger">O telefone tem que ter no minimo 11 caracteres.</small>
+                        <p *ngIf="phone.errors.required" class="form-text text-danger">O telefone é obrigatório.</p>
+                        <p *ngIf="phone.errors.pattern" class="form-text text-danger">Digite um telefone válido.</p>
+                        <p *ngIf="phone.errors.maxlength && !phone.errors.pattern" class="form-text text-danger">O telefone pode ter no máximo 11 caracteres.</p>
+                        <p *ngIf="phone.errors.minlength" class="form-text text-danger">O telefone tem que ter no minimo 11 caracteres.</p>
     
                     </div>
 
@@ -144,7 +144,7 @@
 
                 <div *ngIf="date.invalid && (date.dirty || date.touched)">
                 
-                    <small *ngIf="date.errors.required" class="form-text text-danger">A data de nascimento é obrigatória.</small>
+                    <p *ngIf="date.errors.required" class="form-text text-danger">A data de nascimento é obrigatória.</p>
 
                 </div>
 
@@ -164,11 +164,11 @@
 
                     <div *ngIf="cep.invalid && (cep.dirty || cep.touched)">
                     
-                        <small *ngIf="cep.errors.required" class="form-text text-danger">O CEP é obrigatório.</small>
-                        <small *ngIf="cep.errors.cepError" class="form-text text-danger">Digite um CEP válido.</small>
-                        <small *ngIf="cep.errors.pattern" class="form-text text-danger">Digite um CEP válido.</small>
-                        <small *ngIf="cep.errors.maxlength" class="form-text text-danger">O CEP pode ter no máximo 8 caracteres.</small>
-                        <small *ngIf="cep.errors.minlength" class="form-text text-danger">O CEP tem que ter no minimo 8 caracteres.</small>
+                        <p *ngIf="cep.errors.required" class="form-text text-danger">O CEP é obrigatório.</p>
+                        <p *ngIf="cep.errors.cepError" class="form-text text-danger">Digite um CEP válido.</p>
+                        <p *ngIf="cep.errors.pattern" class="form-text text-danger">Digite um CEP válido.</p>
+                        <p *ngIf="cep.errors.maxlength" class="form-text text-danger">O CEP pode ter no máximo 8 caracteres.</p>
+                        <p *ngIf="cep.errors.minlength" class="form-text text-danger">O CEP tem que ter no minimo 8 caracteres.</p>
     
                     </div>
 
@@ -204,9 +204,9 @@
 
                     <div *ngIf="number.invalid && (number.dirty || number.touched)">
                         
-                        <small *ngIf="number.errors.required" class="form-text text-danger">O número é obrigatório.</small>
-                        <small *ngIf="number.errors.pattern" class="form-text text-danger">Digite um número válido.</small>
-                        <small *ngIf="number.errors.maxlength" class="form-text text-danger">O número pode ter no máximo 8 caracteres.</small>
+                        <p *ngIf="number.errors.required" class="form-text text-danger">O número é obrigatório.</p>
+                        <p *ngIf="number.errors.pattern" class="form-text text-danger">Digite um número válido.</p>
+                        <p *ngIf="number.errors.maxlength" class="form-text text-danger">O número pode ter no máximo 8 caracteres.</p>
         
                     </div>
                     
@@ -237,7 +237,7 @@
 
                     <div *ngIf="complement.invalid && (complement.dirty || complement.touched)">
                     
-                        <small *ngIf="complement.errors.maxlength" class="form-text text-danger">O complemento pode ter no máximo 120 caracteres.</small>
+                        <p *ngIf="complement.errors.maxlength" class="form-text text-danger">O complemento pode ter no máximo 120 caracteres.</p>
     
                     </div>
 
