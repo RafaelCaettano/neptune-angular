@@ -78,9 +78,9 @@ export class RegisterComponent implements OnInit {
 		console.log(this.form)
 		const formData = this.form.value;
 		let success: boolean = await this.searchEmail(formData.email);
-		console.log(success)
 
 		if(success) {
+
 			let user = new User();
 			user.name = formData.name;
 			user.email = formData.email;
@@ -96,6 +96,7 @@ export class RegisterComponent implements OnInit {
 			user.address.complemento = formData.complement;
 
 			this.userService.createUser(user).subscribe(
+
 				(res) => {
 					this.openModalSuccess();
 				},
@@ -103,7 +104,9 @@ export class RegisterComponent implements OnInit {
 				(error) => {
 					this.openModalError(error);
 				}
+				
 			)
+
 		}
 		else {
 			this.openModalError('E-mail já cadastrado.');

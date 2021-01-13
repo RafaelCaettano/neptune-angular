@@ -157,3 +157,42 @@ input.ng-invalid.ng-touched {
     background: var(--primary-color);
     border-color: var(--primary-color);
 }
+
+@media only screen and (max-width: 1000px) {
+    #register-row {
+        flex-direction: column;
+    }
+
+    .form-row {
+        margin-left: 0;
+    }
+
+    .col-left {
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 970px) {
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    .col-total {
+        width: 100%;
+        padding: 0 !important;
+    }
+
+    .col-total .margin-right {
+        margin-right: 0 !important;
+    }
+
+    .input-group {
+        padding-left: 0 !important;
+    }
+
+}
+
+@media only screen and (max-width: 811px) {
+
+}

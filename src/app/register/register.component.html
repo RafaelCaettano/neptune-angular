@@ -1,12 +1,12 @@
 <div class="container-fluid">
 
-    <div class="row">
+    <div class="row" id="register-row">
 
         <div class="col d-flex flex-column">
 
             <button class="photo-button"><img src="../../assets/img/icons/user.svg" alt="Botão de escolher foto" width="200px"></button>
 
-            <form [formGroup]="form" class="row" novalidate (ngSubmit)="register()">
+            <form [formGroup]="form" class="row form-row" novalidate (ngSubmit)="register()">
 
                 <label class="form-label">Nome completo</label>
                 <div class="input-group">
@@ -103,7 +103,7 @@
 
                 </div>
 
-                <div class="col-6">
+                <div class="col-6 col-total">
                     
                     <label class="form-label">Telefone</label>
                     <div class="input-group ">
@@ -126,7 +126,7 @@
 
                 </div>
 
-                <div class="col-6">
+                <div class="col-6 col-total">
                     
                     <label class="form-label" style="margin-left: 0;">Data de nascimento</label>
                     <div class="input-group ">
@@ -148,7 +148,7 @@
 
                 </div>
 
-                <div class="col-4" style="padding-right: 0;">
+                <div class="col-4 col-total" style="padding-right: 0;">
     
                     <label class="form-label">CEP</label>
                     <div class="input-group ">
@@ -174,7 +174,7 @@
 
                 </div>
 
-                <div class="col-8" style="padding-left: 0;">
+                <div class="col-8 col-total" style="padding-left: 0;">
     
                     <label class="form-label" style="margin-left: 0;">Rua e Cidade</label>
                     <input 
@@ -184,7 +184,7 @@
                     
                 </div>
                 
-                <div class="col-6 margin-right" style="padding: 0 0 0 70px;">
+                <div class="col-6 margin-right col-total" style="padding: 0 0 0 70px;">
     
                     <label class="form-label" style="margin-left: 0;">Bairro</label>
                     <input 
@@ -194,7 +194,7 @@
                     
                 </div>
                 
-                <div class="col-3 margin-right" style="padding: 0 0 0 0;">
+                <div class="col-3 margin-right col-total" style="padding: 0 0 0 0;">
     
                     <label class="form-label" style="margin-left: 0;">Número</label>
                     <input 
@@ -212,7 +212,7 @@
                     
                 </div>
                 
-                <div class="col" style="padding: 0 0 0 0;">
+                <div class="col col-total" style="padding: 0 0 0 0;">
     
                     <label class="form-label" style="margin-left: 0;">UF</label>
                     <input 
