@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterErrorComponent } from './register/register-error/register-error.component';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { RegisterErrorComponent } from './register/register-error/register-error
     HttpClientModule,
     ReactiveFormsModule,
     NgbModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
