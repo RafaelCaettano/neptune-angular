@@ -56,11 +56,22 @@ export class AuthService {
 		try {
 			const result = await firebase.auth().createUserWithEmailAndPassword(email, password);
 			this.sendVerificationMail();
+			this.setUserData(result.user);
 		} catch (error) {
-			window.alert(error.message);
 		}
 
 	}
+
+	async authLogin(provider: firebase.auth.AuthProvider) {
+		try {
+			const result = await firebase.auth().signInWithPopup(provider);
+			this.ngZone.run(() => {
+				this.router.navigate(['dashboard']);
+			});
+			this.setUserData(result.user);
+		} catch (error) {
+		}
+	  }
 	
 	async sendVerificationMail() {
 		await firebase.auth().currentUser.sendEmailVerification();
