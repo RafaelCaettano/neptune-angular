@@ -16,6 +16,8 @@ import { RegisterErrorComponent } from './register/register-error/register-error
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from 'src/environments/environment';
+import { AuthService } from "./shared/auth/auth.service";
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { environment } from 'src/environments/environment';
     HomeComponent,
     NewsComponent,
     RegisterComponent,
-    RegisterErrorComponent
+    RegisterErrorComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

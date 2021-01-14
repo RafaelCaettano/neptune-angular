@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { Address } from '../shared/models/address.model';
 import { AddressService } from '../shared/services/address.service';
 import { UserService } from '../shared/services/user.service';
-import { NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { MyValidators } from './myValidators';
 import { User } from '../shared/models/user.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -11,12 +11,13 @@ import { RegisterSuccessComponent } from './register-success/register-success.co
 import { RegisterErrorComponent } from './register-error/register-error.component';
 import { CustomAdapter } from './datePickerAdapter/customAdapter';
 import { CustomDateParserFormatter } from './datePickerAdapter/customDateParserFormatter';
+import { AuthService } from '../shared/auth/auth.service';
 
 @Component({
 	selector: 'app-register',
 	templateUrl: './register.component.html',
 	styleUrls: ['./register.component.css'],
-	providers: [ AddressService, UserService, 
+	providers: [ AddressService, UserService, AuthService,
 		{ provide: NgbDateAdapter, useClass: CustomAdapter },
 		{ provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter }
 	]
@@ -25,6 +26,7 @@ export class RegisterComponent implements OnInit {
 
 	addressService: AddressService;
 	userService: UserService;
+	authService: AuthService;
 	success: User[];
 	form: FormGroup;
 	model: NgbDateStruct;
@@ -32,9 +34,10 @@ export class RegisterComponent implements OnInit {
   	model2: string;
 
 
-	constructor(addressService: AddressService, userService: UserService, private fb: FormBuilder, private modalService: NgbModal, private ngbCalendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>) { 
+	constructor(addressService: AddressService, userService: UserService, authService: AuthService, private fb: FormBuilder, private modalService: NgbModal) { 
 		this.addressService = addressService;
 		this.userService = userService;
+		this.authService = authService;
 	}
 
 	ngOnInit(): void {
@@ -77,9 +80,9 @@ export class RegisterComponent implements OnInit {
 
 		console.log(this.form)
 		const formData = this.form.value;
-		let success: boolean = await this.searchEmail(formData.email);
+		let emailSuccess: boolean = await this.searchEmail(formData.email);
 
-		if(success) {
+		if(!emailSuccess) {
 
 			let user = new User();
 			user.name = formData.name;
@@ -99,6 +102,7 @@ export class RegisterComponent implements OnInit {
 
 				(res) => {
 					this.openModalSuccess();
+					this.authService.signUp(formData.email, formData.password)
 				},
 
 				(error) => {
@@ -167,6 +171,8 @@ export class RegisterComponent implements OnInit {
 			}
 
 		})
+
+		console.log(success)
 
 		return success;
 
