@@ -37,4 +37,8 @@ export class UserService {
             );
     }
 
+    addToLocalStorage(user: User) {
+        localStorage.setItem('userLogged', JSON.stringify(user));
+    }
+
 }

@@ -12,6 +12,7 @@ import { Router } from "@angular/router";
 export class AuthService {
 
 	userData: any;
+	MsgError: string = '';
 
 	map = new Map([
 		[ 'auth/wrong-password', 'A senha está incorreta!' ],
@@ -47,6 +48,7 @@ export class AuthService {
 			});
 			this.setUserData(result.user);
 		} catch (error) {
+			this.MsgError = this.map.get(error.code);
 		}
 
 	}
@@ -58,6 +60,7 @@ export class AuthService {
 			this.sendVerificationMail();
 			this.setUserData(result.user);
 		} catch (error) {
+			this.MsgError = this.map.get(error.code);
 		}
 
 	}
@@ -70,6 +73,7 @@ export class AuthService {
 			});
 			this.setUserData(result.user);
 		} catch (error) {
+			this.MsgError = this.map.get(error.code);
 		}
 	  }
 	
@@ -78,13 +82,13 @@ export class AuthService {
 		this.router.navigate(['verify-email-address']);
 	}
 	
-	async forgotPassword(passwordResetEmail) {
+	async forgotPassword(email: string) {
 
 		try {
-			await firebase.auth().sendPasswordResetEmail(passwordResetEmail);
-			window.alert('Password reset email sent, check your inbox.');
+			await firebase.auth().sendPasswordResetEmail(email);
+			this.MsgError = 'Password reset email sent, check your inbox.';
 		} catch (error) {
-			window.alert(error);
+			this.MsgError = this.map.get(error.code);
 		}
 
 	}
