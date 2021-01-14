@@ -1,0 +1,86 @@
+.sign-up-row {
+    margin: 10% 0 10% 0;
+}
+
+input.ng-valid.ng-touched {
+    border: 2px solid var(--secondary-color);
+}
+
+input.ng-invalid.ng-touched {
+    border: 2px solid red;
+}
+
+.form-control {
+    background: #323232;
+    border: none;
+    color: white;
+    border-radius: 5px !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--secondary-text-color);
+    opacity: 0.5; /* Firefox */
+}
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--secondary-text-color);
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:var(--secondary-text-color);
+}
+
+.form-button {
+    border: none;
+    width: 15%;
+    margin: 20px 0 0 0;
+    border-radius: 5px;
+    color: var(--secondary-text-color);
+    padding: 7px 0 7px 0;
+    transition: 0.5s;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: var(--secondary-color);
+}
+
+.form-button:hover {
+    transition: 0.5s;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.input-group {
+    width: 30%;
+    margin: 1% 0 1% 0;
+}
+
+.form-row {
+    margin: 2% 0 2% 0;
+}
+
+.title {
+    font-family: var(--primary-font);
+    font-size: 300%;
+    color: var(--secondary-text-color);
+    margin: 0 0 1% 0;
+}
+
+.sub-title {
+    font-family: var(--primary-font);
+    font-size: 150%;
+    color: var(--primary-text-color);
+    margin: 0 0 1% 0;
+}
+
+.avatar-icon {
+    width: 150px;
+    margin-right: 7%;
+}
+
+.forgot-password {
+    cursor: pointer;
+    color: var(--secondary-text-color);
+}

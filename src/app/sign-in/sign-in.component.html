@@ -1,1 +1,44 @@
-<p>sign-in works!</p>
+<div class="container-fluid">    
+
+    <div class="row justify-content-center sign-up-row">
+
+        <div class="col d-flex justify-content-end">
+            <img src="../../assets/img/icons/avatar.svg" alt="User logo" class="avatar-icon">
+        </div>
+        
+        <div class="col">
+            <h2 class="title align-self-center">NEPTUNE</h2>
+            <h4 class="sub-title align-self-center">Login</h4>
+        </div>
+
+        <form [formGroup]="form" class="form-row" novalidate>
+
+            <div class="col d-flex flex-column align-items-center">
+
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="E-mail"
+                        formControlName="email">
+                </div>
+    
+                <div class="input-group">
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        placeholder="Senha"
+                        formControlName="password">
+                </div>
+
+                <span class="forgot-password" routerLink="/forgot-password">Esqueceu a senha?</span>
+
+                <button class="primary-btn form-button" [disabled]="!form.valid" type="submit" >Entrar</button>
+
+            </div>
+        </form>
+        
+
+    </div>
+
+</div>
