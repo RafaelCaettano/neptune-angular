@@ -18,6 +18,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from 'src/environments/environment';
 import { AuthService } from "./shared/auth/auth.service";
 import { SignInComponent } from './sign-in/sign-in.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     NewsComponent,
     RegisterComponent,
     RegisterErrorComponent,
-    SignInComponent
+    SignInComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
