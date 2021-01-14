@@ -33,7 +33,6 @@ export class RegisterComponent implements OnInit {
 	model1: string;
   	model2: string;
 
-
 	constructor(addressService: AddressService, userService: UserService, authService: AuthService, private fb: FormBuilder, private modalService: NgbModal) { 
 		this.addressService = addressService;
 		this.userService = userService;
