@@ -12,6 +12,9 @@ import { Router } from "@angular/router";
 export class AuthService {
 
 	userData: any;
+	status = {
+	  isDanger: true,
+	  valid: true };
 	MsgError: string = '';
 
 	map = new Map([
@@ -48,6 +51,7 @@ export class AuthService {
 			});
 			this.setUserData(result.user);
 		} catch (error) {
+			this.status.valid = false;
 			this.MsgError = this.map.get(error.code);
 		}
 
@@ -60,6 +64,8 @@ export class AuthService {
 			this.sendVerificationMail();
 			this.setUserData(result.user);
 		} catch (error) {
+			this.status.valid = false;
+			console.log(error)
 			this.MsgError = this.map.get(error.code);
 		}
 
@@ -88,6 +94,8 @@ export class AuthService {
 			await firebase.auth().sendPasswordResetEmail(email);
 			this.MsgError = 'Password reset email sent, check your inbox.';
 		} catch (error) {
+			this.status.isDanger = true;
+			this.status.valid = false;
 			this.MsgError = this.map.get(error.code);
 		}
 
@@ -128,7 +136,7 @@ export class AuthService {
 		await firebase.auth().signOut();
 		localStorage.removeItem('user');
 		localStorage.removeItem('userLogged');
-		this.router.navigate(['home']);
+		this.router.navigate(['news']);
 	}
 
 }
