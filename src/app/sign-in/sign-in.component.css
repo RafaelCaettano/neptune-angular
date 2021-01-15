@@ -83,4 +83,16 @@ input.ng-invalid.ng-touched {
 .forgot-password {
     cursor: pointer;
     color: var(--secondary-text-color);
+    width: 30%;
+    text-align: end;
+}
+
+.alert {
+    width: 30%;
+}
+
+.alert-danger {
+    background-color: red;
+    border-color: red;
+    color: white;
 }
