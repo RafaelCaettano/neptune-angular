@@ -1,10 +1,8 @@
 <div class="container-fluid">
 
-    <img src="../../assets/img/background.jpg" alt="background" class="background-opacity">
-
     <div class="row">
 
-        <div class="container-fluid" style="overflow: hidden;">
+        <div  *ngIf="!authService.isLoggedIn" class="container-fluid" style="overflow: hidden;">
 
             <div class="row justify-content-center align-items-center">
 
@@ -24,7 +22,7 @@
 
         </div>
 
-        <!-- <div class="col-4" *ngFor="let planet of planets">
+        <div class="col-4" *ngFor="let planet of planets">
 
             <div class="card mb-3">
 
@@ -46,7 +44,7 @@
 
             </div>
 
-        </div> -->
+        </div>
 
     </div>
 
