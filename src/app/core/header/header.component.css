@@ -2,8 +2,16 @@
     background-color: transparent;
 }
 
-.navbar-brand-name {
+.navbar-brand {
     font-family: var(--primary-font);
+}
+
+.navbar-brand > img {
+    width: 50px;
+}
+
+.navbar-toggler > img {
+    width: 30px;
 }
 
 .nav-link {
@@ -18,7 +26,7 @@
 }
 
 .active {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     padding: 5px;
     border-radius: 5px;
     color: white;
@@ -60,11 +68,13 @@
     margin: 50px 0 0 auto;
 }
 
-.dropstart{
-    margin: 0 0 0 auto;
+.profile-button > img {
+    width: 40px;
+    opacity: 0.5; 
+    margin-left: 30px;
 }
 
-.user-nick {
-    color: var(--secondary-text-color) !important;
-    font-size: 120%;
+.dropdown-item-ico {
+    width: 30px;
+    margin-right: 5px;
 }

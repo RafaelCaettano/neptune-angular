@@ -26,7 +26,6 @@ export class HeaderComponent implements OnInit {
 		this.userService.emailRegistered(this.authService.getEmail).subscribe(
 			(user: User[]) => {
 				this.user = user[0];
-				console.log(this.user)
 			}
 		)
 

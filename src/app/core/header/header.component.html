@@ -3,26 +3,26 @@
     <div class="container-fluid d-flex justify-content-start">
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="../../../../assets/img/icons/menu.svg" alt="menu" width="30px">
+            <img src="../../../../assets/img/icons/menu.svg" alt="Icone de menu">
         </button>
 
-        <a class="navbar-brand" href="#">
-            <img src="../../../../assets/img/neptune.svg" alt="logo" width="40px">
+        <a class="navbar-brand" routerLink="/home">
+            <img src="../../../../assets/img/neptune.svg" alt="Logo">
         </a>
 
-        <a class="navbar-brand navbar-brand-name" href="#">NEPTUNE</a>
+        <a class="navbar-brand" routerLink="/home">NEPTUNE</a>
 
         <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarTogglerDemo02">
             
             <ul class="navbar-nav mb-2 mb-lg-0">
 
                 <li class="nav-item d-flex justify-content-start align-items-center" routerLink="/home" routerLinkActive="active">
-                    <img class="link-icon" src="../../../../assets/img/icons/home.svg" alt="Home">
+                    <img class="link-icon" src="../../../../assets/img/icons/home.svg" alt="Icone da página home">
                     <a class="nav-link" routerLinkActive="active">Home</a>
                 </li>
 
                 <li class="nav-item d-flex justify-content-start align-items-center" routerLink="/news" routerLinkActive="active">
-                    <img class="link-icon" src="../../../../assets/img/icons/news.svg" alt="Notícias">
+                    <img class="link-icon" src="../../../../assets/img/icons/news.svg" alt="Icone da página de notícias">
                     <a class="nav-link" routerLinkActive="active">Notícias</a>
                 </li>
 
@@ -37,7 +37,7 @@
         <div class="dropstart">
 
             <button class="profile-button" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../../../assets/img/icons/avatar.svg" alt="avatar" width="40px" style="opacity: 0.5; margin-left: 30px;">
+                <img src="../../../assets/img/icons/avatar.svg" alt="Icone do perfil">
             </button>
             
             <ul *ngIf="authService.isLoggedIn" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
@@ -56,8 +56,18 @@
             
             <ul *ngIf="!authService.isLoggedIn" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
 
-                <li><a class="dropdown-item" routerLink="/sign-in">Entrar</a></li>
-                <li><a class="dropdown-item" routerLink="/register">Cadastrar</a></li>
+                <li>
+                    <a class="dropdown-item" routerLink="/sign-in">
+                        <img class="dropdown-item-ico" src="../../assets/img/icons/login.svg" alt="Icone de cadastro"> 
+                        Entrar
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" routerLink="/register">
+                        <img class="dropdown-item-ico" src="../../assets/img/icons/sign-up.svg" alt="Icone de cadastro"> 
+                        Cadastrar
+                    </a>
+                </li>
 
             </ul>
 
