@@ -1,82 +1,71 @@
-.card-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; 
-    -webkit-box-orient: vertical;
+.container-fluid {
+    padding-top: 6%;
+    padding-bottom: 6%;
 }
 
-.card {
-    background-color: transparent;
-}
-
-.card-title {
-    color: var(--primary-text-color);
-    font-weight: 700;
-}
-
-.card-body {
-    background-color: var(--secondary-bg-color);
-    border-radius: 10px;
-}
-
-.jumbotron {
-    background-image: url(http://space-facts.com/wp-content/uploads/neptune-transparent.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    height: 700px;
-}
-
-.jumbotron-title {
+.container-title {
     font-family: var(--primary-font);
     font-size: 300%;
     color: var(--secondary-text-color);
-    margin: 0 0 0 5%;
 }
 
-.jumbotron-text {
-    margin: 2% 0 0 5%;
+.container-text {
     color: var(--secondary-text-color);
-    width: 75%;
     line-height: 40px;
     font-size: 125%;
 }
 
 .btn {
     padding: 15px 30px;
-    margin: 2% 0 0 5%;
     border-radius: 5px; 
+    font-weight: 700;
     font-size: 100%;
-    font-family: var(--primary-font);
+    color: var(--secondary-text-color);
 }
 
-.btn-primary {
+.btn:hover {
     background-color: var(--secondary-color);
-    border: none;
+    border-color: var(--secondary-color);
 }
 
-.btn-secondary {
+.primary-btn {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.secondary-btn {
     background-color: transparent;
     border-color: var(--secondary-bg-color);
+    margin-left: 20px;
 }
 
-.btn-secondary:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+.neptune-image {
+    width: 80%;
 }
 
-.btn-primary:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+@media only screen and (max-width: 1000px) {
+
+    .neptune-image {
+        width: 90%;
+        margin-top: 5%;
+    }
+
+    .container-row {
+        flex-direction: column;
+    }
+
+    .col-resp {
+        width: 90%;
+    }
+
 }
 
-.background-opacity {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    opacity: 0.2;
-    max-height: 100%;
-    bottom: 0;
-    z-index: -1;
+@media only screen and (max-width: 450px) {
+
+
+
+}
+
+@media only screen and (max-width: 811px) {
+
 }

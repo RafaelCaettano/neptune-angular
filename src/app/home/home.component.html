@@ -1,48 +1,31 @@
-<div class="container-fluid">
+<div *ngIf="!authService.isLoggedIn" class="container-fluid">
 
-    <div class="row">
+    <div class="row justify-content-around align-items-center container-row">
 
-        <div  *ngIf="!authService.isLoggedIn" class="container-fluid" style="overflow: hidden;">
+        <div class="col-5 col-resp">
 
-            <div class="row justify-content-center align-items-center">
+            <h2 class="container-title">NEPTUNE</h2>
+            <p class="container-text">Nós da NEPTUNE temos o dever de entregar a vocês as melhores informações sobre tudo o que acontece no espaço! Aqui você tera acesso a notícias, curiosidades, eventos e muitos acontecimentos da comunidade cientifica</p>
 
-                <div class="col-6">
-                    <h2 class="jumbotron-title">NEPTUNE</h2>
-                    <p class="jumbotron-text">Nós da NEPTUNE temos o dever de entregar a vocês as melhores informações sobre tudo o que acontece no espaço! Aqui você tera acesso a notícias, curiosidades, eventos e muitos acontecimentos da comunidade cientifica</p>
-
-                    <button type="button" class="btn btn-primary" routerLink="/sign-in">Login</button>
-                    <button type="button" class="btn btn-secondary" routerLink="/register">Cadastrar</button>
-                </div>
-
-                <div class="col-6">
-                    <img src="http://space-facts.com/wp-content/uploads/neptune-transparent.png" alt="Netuno">
-                </div>
-
-            </div>
+            <button type="button" class="btn primary-btn " routerLink="/sign-in">Login</button>
+            <button type="button" class="btn secondary-btn " routerLink="/register">Cadastrar</button>
 
         </div>
 
-        <div class="col-4" *ngFor="let planet of planets">
+        <div class="col-5 d-flex justify-content-center col-resp">
+            <img class="neptune-image" src="../../assets/img/neptune.png" alt="Netuno">
+        </div>
 
-            <div class="card mb-3">
+    </div>
 
-                <div class="row g-0">
-                    
-                    <div class="col-md-4 d-flex justify-content-center align-items-center" >
-                        <img [src]="planet.image" [alt]="planet.name" style="width: 100%;">
-                    </div>
+</div>
 
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"> {{ planet.name }} </h5>
-                            <p class="card-text"> {{ planet.description }} </p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
+<div  *ngIf="authService.isLoggedIn" class="container-fluid">
 
-                </div>
+    <div class="row justify-content-center align-items-center">
 
-            </div>
+        <div class="col">
+
 
         </div>
 
