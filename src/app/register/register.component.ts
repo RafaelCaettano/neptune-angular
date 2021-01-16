@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
 
 	ngOnInit(): void {
 
-		this.registered = true
+		this.registered = true;
 		this.newSignUpForm();
 
 	}
@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
 
 			(user) => { 
 				
-				if(user.length < 0 ) {
+				if(user.length === 0 ) {
 
 					let user = new User();
 					user = {
@@ -73,6 +73,7 @@ export class RegisterComponent implements OnInit {
 
 						() => {
 							this.authService.signUp(formData.email, formData.password);
+							this.registered = true;
 							this.newSignUpForm();
 						},
 		
