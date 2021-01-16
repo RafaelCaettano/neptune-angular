@@ -1,0 +1,367 @@
+<div *ngIf="!registered" class="container-fluid">
+
+    <div class="row justify-content-around">
+
+        <div class="sign-up-column d-flex flex-column align-items-center">
+
+            <button class="photo-button">
+                <img src="../../assets/img/icons/user.svg" alt="Botão de escolher foto">
+            </button>
+
+            <form [formGroup]="signUpForm" class="row form-row" novalidate (ngSubmit)="signUp()">
+
+                <div class="col-12 input-col">
+                    
+                    <label class="form-label">Nome completo</label>
+                    <div class="input-group">
+    
+                        <span class="input-group-text">
+                            <img src="../../assets/img/icons/avatar.svg" alt="Icone do nome">
+                        </span>
+                    
+                        <input 
+                            id="name" 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Digite seu nome completo aqui..."
+                            formControlName="name">
+                     
+                    </div>
+    
+                    <div class="message-contianer" *ngIf="name.invalid && (name.dirty || name.touched)">
+                    
+                        <p *ngIf="name.errors.maxlength" class="form-text text-danger">O nome pode ter no máximo 120 caracteres.</p>
+                        <p *ngIf="name.errors.minlength" class="form-text text-danger">O nome tem que ter no minimo 4 caracteres.</p>
+                        <p *ngIf="name.errors.required" class="form-text text-danger">O nome é obrigatório.</p>
+    
+                    </div>
+
+                </div>
+
+                <div class="col-12 input-col">
+                
+                    <label class="form-label">Nick</label>
+                    <div class="input-group ">
+
+                        <span class="input-group-text">
+                            <img src="../../assets/img/icons/nick.svg" alt="Icone do nickname">
+                        </span>
+
+                        <input 
+                            type="text" 
+                            #nickInput 
+                            class="form-control" 
+                            (blur)="searchNick(nickInput.value)"
+                            placeholder="Digite seu nome de usuário aqui..." 
+                            formControlName="nick">
+
+                    </div>
+                
+                    <div class="message-contianer" *ngIf="nick.invalid && (nick.dirty || nick.touched)">
+                
+                        <p *ngIf="nick.errors.maxlength" class="form-text text-danger">O nickname pode ter no máximo 120 caracteres.</p>
+                        <p *ngIf="nick.errors.required" class="form-text text-danger">O nickname é obrigatório.</p>
+                        <p *ngIf="nick.errors.nickRegistered" class="form-text text-danger">Nickname já registrado.</p>
+                        <p *ngIf="nick.errors.minlength" class="form-text text-danger">O nickname precisa ter no minimo 4 caracteres.
+                        </p>
+                
+                    </div>
+                    <p *ngIf="nick.valid" class="form-text text-success">Nickname válido</p>
+                
+                </div>
+
+                <div class="col-12 input-col">
+                
+                    <label class="form-label">E-mail</label>
+                    <div class="input-group ">
+
+                        <span class="input-group-text">
+                            <img src="../../assets/img/icons/email.svg" alt="Icon do e-mail">
+                        </span>
+
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Digite seu e-mail aqui..." 
+                            formControlName="email">
+
+                    </div>
+                
+                    <div class="message-contianer" *ngIf="email.invalid && (email.dirty || email.touched)">
+                
+                        <p *ngIf="email.errors.maxlength" class="form-text text-danger">O e-mail pode ter no máximo 120 caracteres.</p>
+                        <p *ngIf="email.errors.required" class="form-text text-danger">O e-mail é obrigatório.</p>
+                        <p *ngIf="email.errors.emailRegistered" class="form-text text-danger">E-mail já cadastrado.</p>
+                        <p *ngIf="email.errors.pattern" class="form-text text-danger">Digite um e-mail válido.</p>
+                
+                    </div>
+
+                </div>
+
+                <div class="col-12 input-col">
+
+                    <label class="form-label">Senha</label>
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <img src="../../assets/img/icons/password.svg" alt="Icone da senha">
+                        </span>
+
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            placeholder="Digite sua senha aqui..."
+                            formControlName="password">
+
+                    </div>
+
+                    <div class="message-contianer" *ngIf="password.invalid && (password.dirty || password.touched)">
+                    
+                        <p *ngIf="password.errors.minlength" class="form-text text-danger">A senha tem que ter no minimo 8 caracteres.</p>
+                        <p *ngIf="password.errors.required" class="form-text text-danger">A senha é obrigatória.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-12 input-col">
+        
+                    <label class="form-label">Confirme sua senha</label>
+                    <div class="input-group ">
+
+                        <span class="input-group-text">
+                            <img src="../../assets/img/icons/password.svg" alt="Icone da senha">
+                        </span>
+
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            placeholder="Digite sua senha aqui..."
+                            formControlName="passwordConference">
+
+                    </div>
+
+                    <div class="message-contianer" *ngIf="passwordConference.invalid && (passwordConference.dirty || passwordConference.touched)">
+                    
+                        <p *ngIf="passwordConference.errors.passConference" class="form-text text-danger">As senhas são diferentes.</p>
+                        <p *ngIf="passwordConference.errors.required" class="form-text text-danger">Confirmar a sua senha é obrigatório.</p>
+    
+                    </div>
+                
+                </div>
+
+                <div class="col-6 input-col">
+                    
+                    <label class="form-label">Telefone</label>
+                    <div class="input-group ">
+
+                        <span class="input-group-text">
+                            <img src="../../assets/img/icons/phone.svg" alt="Icone do telefone">
+                        </span>
+
+                        <input 
+                            type="phone" 
+                            class="form-control"
+                            placeholder="Digite seu número de telefone aqui..."
+                            formControlName="phone">
+
+                    </div>
+
+                    <div class="message-contianer" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                    
+                        <p *ngIf="phone.errors.required" class="form-text text-danger">O telefone é obrigatório.</p>
+                        <p *ngIf="phone.errors.pattern" class="form-text text-danger">Digite um telefone válido.</p>
+                        <p *ngIf="phone.errors.maxlength && !phone.errors.pattern" class="form-text text-danger">O telefone pode ter no máximo 11 caracteres.</p>
+                        <p *ngIf="phone.errors.minlength" class="form-text text-danger">O telefone tem que ter no minimo 11 caracteres.</p>
+    
+                    </div>
+
+                </div>
+
+                <div class="col-6 input-col">
+                    
+                    <label class="form-label">Data de nascimento</label>
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <img (click)="d.toggle()" src="../../assets/img/icons/date.svg" alt="Icone da data de nascimento">
+                        </span>
+
+                        <input 
+                            class="form-control" 
+                            placeholder="00/00/0000" 
+                            name="d"
+                            formControlName="date"
+                            ngbDatepicker
+                            #d="ngbDatepicker">
+
+                    </div>
+
+                    <div class="message-contianer" *ngIf="date.invalid && (date.dirty || date.touched)">
+                    
+                        <p *ngIf="date.errors.required" class="form-text text-danger">A data de nascimento é obrigatoria.</p>
+                        <p *ngIf="date.errors.pattern" class="form-text text-danger">Digite uma data de nascimento válida.</p>
+    
+                    </div>
+
+                </div>
+
+                <div class="col-4 input-col">
+    
+                    <label class="form-label">CEP</label>
+                    <div class="input-group ">
+
+                        <span class="input-group-text">
+                            <img src="../../assets/img/icons/place.svg" alt="Icone do CEP">
+                        </span>
+                        
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="CEP" 
+                            formControlName="cep"
+                            #CepInput
+                            (input)="searchCEP(CepInput.value)">
+
+                    </div>
+
+                    <div class="message-contianer"  *ngIf="cep.invalid && (cep.dirty || cep.touched)">
+                    
+                        <p *ngIf="cep.errors.required" class="form-text text-danger">O CEP é obrigatório.</p>
+                        <p *ngIf="cep.errors.cepError" class="form-text text-danger">Digite um CEP válido.</p>
+                        <p *ngIf="cep.errors.pattern" class="form-text text-danger">Digite um CEP válido.</p>
+                        <p *ngIf="cep.errors.maxlength" class="form-text text-danger">O CEP pode ter no máximo 8 caracteres.</p>
+                        <p *ngIf="cep.errors.minlength" class="form-text text-danger">O CEP tem que ter no minimo 8 caracteres.</p>
+    
+                    </div>
+
+                </div>
+
+                <div class="col-8 input-col">
+    
+                    <label class="form-label">Rua e Cidade</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        formControlName="address"
+                        style="height: 42px;">
+                    
+                </div>
+                
+                <div class="col-6 input-col">
+    
+                    <label class="form-label">Bairro</label>
+                    <input 
+                        type="text" 
+                        class="form-control"
+                        formControlName="neighborhood">
+                    
+                </div>
+                
+                <div class="col-4 input-col">
+    
+                    <label class="form-label">Número</label>
+                    <input 
+                        type="number" 
+                        class="form-control" 
+                        formControlName="number">
+
+                    <div class="message-contianer"  *ngIf="number.invalid && (number.dirty || number.touched)">
+                        
+                        <p *ngIf="number.errors.required" class="form-text text-danger">O número é obrigatório.</p>
+                        <p *ngIf="number.errors.pattern" class="form-text text-danger">Digite um número válido.</p>
+                        <p *ngIf="number.errors.maxlength" class="form-text text-danger">O número pode ter no máximo 8 caracteres.</p>
+        
+                    </div>
+                    
+                </div>
+                
+                <div class="col-2 input-col">
+    
+                    <label class="form-label">UF</label>
+                    <input 
+                        type="text"  
+                        class="form-control"
+                        formControlName="uf">
+                    
+                </div>
+    
+                <div class="col-12 input-col">
+
+                    <label class="form-label">Complemento</label>
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Digite o complemento aqui..."
+                            formControlName="complement">
+                    </div>
+
+                    <div class="message-contianer"  *ngIf="complement.invalid && (complement.dirty || complement.touched)">
+                    
+                        <p *ngIf="complement.errors.maxlength" class="form-text text-danger">O complemento pode ter no máximo 120 caracteres.</p>
+    
+                    </div>
+
+                </div>
+                
+                <div class="col-12">
+
+                    <div class="row justify-content-end">
+                        <button class="secondary-btn form-button" type="reset">Limpar</button>
+                        <button class="primary-btn form-button" [disabled]="!signUpForm.valid" type="submit" >Enviar</button>
+                    </div>
+
+                </div>
+
+                <div class="col-12"></div>
+                <div class="col-12"></div>
+                <div class="col-12"></div>
+                <div class="col-12"></div>
+                
+
+            </form>
+
+        </div>
+
+        <div class="sign-up-column d-flex flex-column align-items-center">
+
+            <button class="photo-button">
+                <img src="../../assets/img/icons/user.svg" alt="Botão de escolher foto">
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div *ngIf="registered" class="container-fluid teste">
+
+    <div class="row jumb-row justify-content-center align-items-center">
+
+        <div class="jumb">
+    
+            <div class="jumb-header d-flex flex-column align-items-center justify-content-center">
+                <img src="../../assets/img/neptune.svg" alt="Icone de sucesso">
+                <h2 class="title">CADASTRO REALIZADO COM SUCESSO!</h2>
+            </div>
+    
+            <div class="jumb-body d-flex flex-column justify-content-center">
+
+                <h3 class="subtitle">
+                    Bem-vindo!
+                </h3>
+
+                <p class="text-body">
+
+                    Agora você pode acessar todo o nosso conteúdo! Assim como pode favoritar, adicionar e comentar nossas postagens, notícias e novidades! Só falta você verificar o seu e-mail!
+
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

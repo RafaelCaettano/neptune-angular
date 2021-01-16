@@ -8,7 +8,6 @@ import { FooterComponent } from './core/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewsComponent } from './news/news.component';
-import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +17,7 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from "./shared/auth/auth.service";
 import { SignInComponent } from './sign-in/sign-in.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +26,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FooterComponent,
     HomeComponent,
     NewsComponent,
-    RegisterComponent,
     SignInComponent,
-    DashboardComponent
+    DashboardComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

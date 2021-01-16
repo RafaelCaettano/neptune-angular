@@ -1,0 +1,190 @@
+.photo-button {
+    background: none;
+    border: none;
+    margin: 0 0 27px 0;
+}
+
+.photo-button:focus {
+    outline: none;
+}
+
+.photo-button > img {
+    width: 200px;
+}
+
+.sign-up-column {
+    width: 40%;
+    padding: 0 2%;
+}
+
+.input-group-text {
+    background: transparent;
+    border: none;
+    color: var(--secondary-text-color);
+    margin: 0 10px 0 0;
+}
+
+.input-group-text > img {
+    width: 30px;
+}
+
+input.ng-valid.ng-touched {
+    border: 2px solid var(--primary-color);
+}
+
+input.ng-invalid.ng-touched {
+    border: 2px solid red;
+}
+
+.form-control {
+    background: var(--secondary-bg-color);
+    border-color: var(--secondary-bg-color);
+    color: var(--secondary-text-color);
+    border-radius: 5px !important;
+}
+
+.form-label {
+    color: var(--secondary-text-color);
+    font-weight: 500;
+    margin-top: 25px;
+}
+
+.form-text {
+    text-align: right !important;
+    margin: 10px 0 0 0
+}
+
+.form-row {
+    width: 100%;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--secondary-text-color);
+    opacity: 0.5; /* Firefox */
+}
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--secondary-text-color);
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:var(--secondary-text-color);
+}
+
+.message-contianer {
+    width: 100%;
+}
+
+.text-success {
+    color: var(--primary-color) !important;
+}
+
+.form-button {
+    border: none;
+    width: 25%;
+    border-radius: 5px;
+    margin-right: 12px;
+    margin-top: 20px;
+    color: var(--secondary-text-color);
+    padding: 7px 0 7px 0;
+    transition: 0.5s;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: var(--primary-color);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid var(--secondary-text-color);
+}
+
+.form-button:hover {
+    transition: 0.5s;
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .input-col {
+        width: 100%;
+    }
+
+    .sign-up-column {
+        width: 100%;
+    }
+
+    .input-group-text > img {
+        width: 20px;
+    }
+
+}
+
+.jumb {
+    width: 50%;
+    padding: 2% 0 0 0;
+}
+
+.title {
+    color: var(--secondary-text-color);
+    font-family: var(--primary-font);
+    margin: 0 0 0 2%;
+}
+
+.jumb-header > img {
+    width: 20%;
+    margin-bottom: 5%;
+}
+
+.jumb-header {
+    background-color: transparent;
+    border-radius: 15px 15px 0 0;
+    padding: 2%;
+    margin-bottom: 3%;
+}
+
+.jumb-body {
+    background-color: var(--secondary-bg-color);
+    padding: 2%;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.subtitle {
+    color: var(--secondary-text-color);
+    font-family: var(--primary-font);
+    font-size: 150%;
+}
+
+.text-body {
+    color: var(--secondary-text-color) !important;
+    font-size: 120%;
+    margin: 2% 0 0 0;
+}
+
+.teste {
+    height: 86vh;
+}
+
+.jumb-row  {
+    height: 86vh;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .jumb {
+        width: 80%;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+
+    .jumb {
+        width: 95%;
+    }
+
+}
