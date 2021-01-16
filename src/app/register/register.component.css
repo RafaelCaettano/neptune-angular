@@ -1,15 +1,61 @@
-.form-control {
-    background: #323232;
+.photo-button {
+    background: none;
     border: none;
-    color: white;
+    margin: 0 0 27px 0;
+}
+
+.photo-button:focus {
+    outline: none;
+}
+
+.photo-button > img {
+    width: 200px;
+}
+
+.sign-up-column {
+    width: 40%;
+    padding: 0 2%;
+}
+
+.input-group-text {
+    background: transparent;
+    border: none;
+    color: var(--secondary-text-color);
+    margin: 0 10px 0 0;
+}
+
+.input-group-text > img {
+    width: 30px;
+}
+
+input.ng-valid.ng-touched {
+    border: 2px solid var(--primary-color);
+}
+
+input.ng-invalid.ng-touched {
+    border: 2px solid red;
+}
+
+.form-control {
+    background: var(--secondary-bg-color);
+    border-color: var(--secondary-bg-color);
+    color: var(--secondary-text-color);
     border-radius: 5px !important;
 }
 
 .form-label {
     color: var(--secondary-text-color);
-    margin-left: 58px;
     font-weight: 500;
     margin-top: 25px;
+}
+
+.form-text {
+    text-align: right !important;
+    margin: 10px 0 0 0
+}
+
+.form-row {
+    width: 100%;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -25,117 +71,20 @@
     color:var(--secondary-text-color);
 }
 
-input.ng-valid.ng-touched {
-    border: 2px solid var(--secondary-color);
-}
-
-input.ng-invalid.ng-touched {
-    border: 2px solid red;
-}
-
-.row {
-    margin: 0 0 0 3%;
-}
-
-.input-group-text {
-    background: transparent;
-    border: none;
-    color: var(--secondary-text-color);
-    margin: 0 10px 0 0;
-}
-
-.form-text {
-    text-align: right !important;
-    margin: 10px 0 0 0
-}
-
-.background-opacity {
-    position: absolute;
-    left: 0;
+.message-contianer {
     width: 100%;
-    opacity: 0.2;
-    height: 1200px;
-    max-height: 100%;
-    z-index: -1;
-}
-
-.container-fluid {
-    background-image: url("../../assets/img/backgroundOpacity.jpg");
-    background-size: cover;
-}
-
-.margin-right {
-    margin-right: 20px;
-}
-
-.photo-button {
-    background: none;
-    border: none;
-    margin: 0 0 27px 0;
-}
-
-.photo-button:focus {
-    outline: none;
-}
-
-.container-title {
-    font-family: var(--primary-font);
-    font-size: 300%;
-    color: var(--secondary-text-color);
-    margin: 5% 0 0 0;
-}
-
-.container-paragraph {
-    font-size: 200%;
-    color: var(--secondary-text-color);
-    font-weight: 100;
-    margin: 13% 0 7% 0;
-}
-
-.col-left {
-    margin: 0 0 0 145px;
-}
-
-.btn {
-    background: var(--secondary-color);
-    border-radius: 10px;
-    font-size: 190%;    
-    color: var(--secondary-text-color);
-    padding: 17px 43px;
-    width: 40%;
-}
-
-.btn:hover {
-    background: var(--primary-color);
-}
-
-.button-row {
-    margin: 0;
-}
-
-.button-separator {
-    width: 12px;
-    background-color: var(--primary-color);
-    padding: 0;
-    margin: 0 0 0 17px;
-    border-radius: 50px;
-}
-
-.button-paragraph {
-    width: 30%;
-    color: var(--secondary-text-color);
-    margin: 0;
 }
 
 .text-success {
-    color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
 }
 
 .form-button {
     border: none;
     width: 25%;
-    margin: 20px 28px 0 0;
     border-radius: 5px;
+    margin-right: 12px;
+    margin-top: 20px;
     color: var(--secondary-text-color);
     padding: 7px 0 7px 0;
     transition: 0.5s;
@@ -144,7 +93,7 @@ input.ng-invalid.ng-touched {
 }
 
 .primary-btn {
-    background: var(--secondary-color);
+    background: var(--primary-color);
 }
 
 .secondary-btn {
@@ -154,45 +103,87 @@ input.ng-invalid.ng-touched {
 
 .form-button:hover {
     transition: 0.5s;
-    background: var(--primary-color);
-    border-color: var(--primary-color);
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
 }
 
 @media only screen and (max-width: 1000px) {
-    #register-row {
-        flex-direction: column;
-    }
 
-    .form-row {
-        margin-left: 0;
-    }
-
-    .col-left {
-        margin-left: 0;
-    }
-}
-
-@media only screen and (max-width: 970px) {
-
-}
-
-@media only screen and (max-width: 450px) {
-
-    .col-total {
+    .input-col {
         width: 100%;
-        padding: 0 !important;
     }
 
-    .col-total .margin-right {
-        margin-right: 0 !important;
+    .sign-up-column {
+        width: 100%;
     }
 
-    .input-group {
-        padding-left: 0 !important;
+    .input-group-text > img {
+        width: 20px;
     }
 
 }
 
-@media only screen and (max-width: 811px) {
+.jumb {
+    width: 50%;
+    padding: 2% 0 0 0;
+}
+
+.title {
+    color: var(--secondary-text-color);
+    font-family: var(--primary-font);
+    margin: 0 0 0 2%;
+}
+
+.jumb-header > img {
+    width: 10%;
+}
+
+.jumb-header {
+    background-color: var(--primary-color);
+    border-radius: 15px 15px 0 0;
+    padding: 2%;
+}
+
+.jumb-body {
+    background-color: var(--secondary-bg-color);
+    padding: 5% 2% 5% 2%;
+    width: 100%;
+    border-radius: 0 0 15px 15px;
+}
+
+.subtitle {
+    color: var(--secondary-text-color);
+    font-family: var(--primary-font);
+    font-size: 150%;
+}
+
+.text-body {
+    color: var(--secondary-text-color) !important;
+    font-size: 120%;
+    margin: 2% 0 0 0;
+}
+
+.teste {
+    height: 86vh;
+}
+
+.row {
+    height: 86vh;
+
+}
+
+@media only screen and (max-width: 800px) {
+
+    .jumb {
+        width: 80%;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+
+    .jumb {
+        width: 95%;
+    }
 
 }

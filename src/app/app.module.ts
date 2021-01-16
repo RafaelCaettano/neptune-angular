@@ -12,7 +12,6 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterErrorComponent } from './register/register-error/register-error.component';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from 'src/environments/environment';
@@ -28,7 +27,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HomeComponent,
     NewsComponent,
     RegisterComponent,
-    RegisterErrorComponent,
     SignInComponent,
     DashboardComponent
   ],
