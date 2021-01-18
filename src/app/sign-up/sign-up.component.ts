@@ -49,8 +49,7 @@ export class SignUpComponent implements OnInit {
 				
 				if(user.length === 0 ) {
 
-					let user = new User();
-					user = {
+					let user: User = {
 						name: formData.name,
 						email: formData.email,
 						nickname: formData.nick,
@@ -105,9 +104,9 @@ export class SignUpComponent implements OnInit {
 			date: new FormControl(null, [ Validators.required ]),
 			password: new FormControl(null, [ Validators.required, Validators.minLength(8)]),
 			passwordConference: new FormControl(null, [ Validators.required ]),
-			address: new FormControl(null),
-			neighborhood: new FormControl(null),
-			uf: new FormControl(null),
+			address: new FormControl(null, [ Validators.required ]),
+			neighborhood: new FormControl(null, [ Validators.required ]),
+			uf: new FormControl(null, [ Validators.required ]),
 			number: new FormControl(null, [ Validators.required, Validators.maxLength(8), Validators.pattern('[0-9]*') ]),
 			complement: new FormControl(null, [ Validators.maxLength(120) ]),
 		},

@@ -13,8 +13,8 @@
 }
 
 .sign-up-column {
-    width: 40%;
-    padding: 0 2%;
+    width: 45%;
+    padding: 10px 2%;
 }
 
 .input-group-text {
@@ -79,6 +79,7 @@ input.ng-invalid.ng-touched {
     color: var(--primary-color) !important;
 }
 
+.sign-in-button,
 .form-button {
     border: none;
     width: 25%;
@@ -92,6 +93,26 @@ input.ng-invalid.ng-touched {
     cursor: pointer;
 }
 
+.container-title {
+    font-family: var(--primary-font);
+    font-size: 300%;
+    color: var(--secondary-text-color);
+    margin: 5% 0 0 0;
+}
+
+.container-paragraph {
+    font-size: 200%;
+    color: var(--secondary-text-color);
+    font-weight: 100;
+    margin: 13% 0 7% 0;
+}
+
+.sign-in-button {
+    padding: 15px 0 15px 0;
+    width: 50%;
+    margin: 0 0 0 12px;
+}
+
 .primary-btn {
     background: var(--primary-color);
 }
@@ -101,26 +122,25 @@ input.ng-invalid.ng-touched {
     border: 2px solid var(--secondary-text-color);
 }
 
+.sign-in-button:hover,
 .form-button:hover {
     transition: 0.5s;
     background: var(--secondary-color);
     border-color: var(--secondary-color);
 }
 
-@media only screen and (max-width: 1000px) {
+.button-separator {
+    width: 12px;
+    background-color: var(--primary-color);
+    padding: 0;
+    margin: 0 0 0 17px;
+    border-radius: 50px;
+}
 
-    .input-col {
-        width: 100%;
-    }
-
-    .sign-up-column {
-        width: 100%;
-    }
-
-    .input-group-text > img {
-        width: 20px;
-    }
-
+.button-paragraph {
+    width: 30%;
+    color: var(--secondary-text-color);
+    margin: 0;
 }
 
 .jumb {
@@ -173,6 +193,10 @@ input.ng-invalid.ng-touched {
     height: 86vh;
 }
 
+.sign-up-container {
+    margin: 5% 0 5% 0;
+}
+
 @media only screen and (max-width: 800px) {
 
     .jumb {
@@ -185,6 +209,22 @@ input.ng-invalid.ng-touched {
 
     .jumb {
         width: 95%;
+    }
+
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .input-col {
+        width: 100%;
+    }
+
+    .sign-up-column {
+        width: 100%;
+    }
+
+    .input-group-text > img {
+        width: 20px;
     }
 
 }

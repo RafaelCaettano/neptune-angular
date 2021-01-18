@@ -1,6 +1,28 @@
 <div *ngIf="!registered" class="container-fluid">
 
-    <div class="row justify-content-around">
+    <div class="row justify-content-around sign-up-container">
+
+        <div class="sign-up-column d-flex flex-column align-items-center jus">
+
+            <div class="row">
+
+                <h2 class="container-title">CADASTRO</h2>
+    
+                <p class="container-paragraph">Faça o seu cadastro para poder ler todas as nossas notícias, favoritar e comentar as suas preferidas e ver todo o nosso acervo de informações sobre o espaço e as novas descoberta da ciência.</p>
+                
+                <div class="row button-row">
+    
+                    <button class="primary-btn sign-in-button"> <img src="../../assets/img/icons/login.svg" alt="User icon" width="30px"> Login</button>
+                    
+                    <div class="button-separator"></div>
+    
+                    <p class="button-paragraph align-self-center">Faça o login caso já possua sua conta.</p>
+    
+                </div>
+
+            </div>
+
+        </div>
 
         <div class="sign-up-column d-flex flex-column align-items-center">
 
@@ -262,7 +284,7 @@
     
                     <label class="form-label">Número</label>
                     <input 
-                        type="number" 
+                        type="text" 
                         class="form-control" 
                         formControlName="number">
 
@@ -314,21 +336,7 @@
 
                 </div>
 
-                <div class="col-12"></div>
-                <div class="col-12"></div>
-                <div class="col-12"></div>
-                <div class="col-12"></div>
-                
-
             </form>
-
-        </div>
-
-        <div class="sign-up-column d-flex flex-column align-items-center">
-
-            <button class="photo-button">
-                <img src="../../assets/img/icons/user.svg" alt="Botão de escolher foto">
-            </button>
 
         </div>
 
