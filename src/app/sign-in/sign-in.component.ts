@@ -12,7 +12,7 @@ import { UserService } from '../shared/services/user.service';
 })
 export class SignInComponent implements OnInit {
 
-	form: FormGroup;
+	signInForm: FormGroup;
 	authService: AuthService
 	userService: UserService
 
@@ -23,12 +23,12 @@ export class SignInComponent implements OnInit {
 
 	ngOnInit(): void {
 
-		this.form = this.fb.group({
+		this.signInForm = this.fb.group({
 			email: new FormControl(null, [Validators.required]),
 			password: new FormControl(null, [Validators.required]),
 		})
 
-	}
+	} 
 
 	signIn() {
 		this.authService.signIn(this.email.value, this.password.value);
@@ -39,7 +39,7 @@ export class SignInComponent implements OnInit {
 		)
 	}
 
-	get email() { return this.form.get('email') }
-	get password() { return this.form.get('password') }
+	get email() { return this.signInForm.get('email') }
+	get password() { return this.signInForm.get('password') }
 
 }

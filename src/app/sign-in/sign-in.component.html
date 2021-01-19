@@ -1,18 +1,20 @@
 <div class="container-fluid">    
 
-    <div class="row justify-content-center sign-up-row">
+    <div class="row justify-content-center align-items-center">
 
-        <div class="col-4 d-flex flex-column align-items-center">
-            <h2 class="title align-self-center">NEPTUNE</h2>
-            <h4 class="sub-title align-self-center">Login</h4>
+        <div class="row sign-in-row justify-content-center">
+
+            <img src="../../assets/img/neptune.svg" alt="Logo">
+            <h2 class="title">Entre na sua conta da NEPTUNE</h2>
+
         </div>
 
-        <form [formGroup]="form" class="form-row" novalidate (ngSubmit)="signIn()">
+        <div class="row sign-in-row justify-content-center">
 
-            <div class="col d-flex flex-column align-items-center">
-        
-                <p class="alert alert-danger align-self-center" *ngIf="!authService.status.valid" > {{ authService.MsgError }} </p>
+            <form [formGroup]="signInForm" class="row form-row justify-content-center" novalidate (ngSubmit)="signIn()">
 
+                <p class="alert alert-danger" *ngIf="!authService.status.valid" > {{ authService.MsgError }} </p>
+    
                 <div class="input-group">
                     <input 
                         type="text" 
@@ -20,7 +22,11 @@
                         placeholder="E-mail"
                         formControlName="email">
                 </div>
-    
+                
+                <div class="message-contianer" *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <p *ngIf="email.errors.required" class="form-text text-danger">O e-mail é obrigatório.</p>
+                </div>
+        
                 <div class="input-group">
                     <input 
                         type="password" 
@@ -28,14 +34,21 @@
                         placeholder="Senha"
                         formControlName="password">
                 </div>
-                <p class="forgot-password" routerLink="/forgot-password">Esqueceu a senha?</p>
+                
+                <div class="message-contianer" *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <p *ngIf="password.errors.required" class="form-text text-danger">A senha é obrigatória.</p>
+                </div>
 
-                <button class="primary-btn form-button" [disabled]="!form.valid" type="submit" >Entrar</button>
+                <p class="forgot-password align-self-end" routerLink="/forgot-password">Esqueceu a senha?</p>
+    
+                <div class="row justify-content-center">
+                    <button class="primary-btn" [disabled]="!signInForm.valid" type="submit" >Entrar</button>
+                </div>
 
-            </div>
+            </form>
 
-        </form>
-
+        </div>
+        
     </div>
 
 </div>

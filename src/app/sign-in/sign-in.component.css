@@ -1,19 +1,27 @@
-.sign-up-row {
-    margin: 10% 0 10% 0;
+.sign-in-row {
+    width: 100%;
 }
 
-input.ng-valid.ng-touched {
-    border: 2px solid var(--secondary-color);
+.sign-in-row > img {
+    width: 200px;
 }
 
-input.ng-invalid.ng-touched {
-    border: 2px solid red;
+.container-fluid {
+    min-height: 86vh;
+}
+
+.title {
+    text-align: center;
+    color: var(--secondary-text-color);
+    margin: 2% 0 0 0;
+    font-weight: 300;
+    font-size: 150%;
 }
 
 .form-control {
-    background: #323232;
-    border: none;
-    color: white;
+    background: var(--secondary-bg-color);
+    border-color: var(--secondary-bg-color);
+    color: var(--secondary-text-color);
     border-radius: 5px !important;
 }
 
@@ -30,69 +38,77 @@ input.ng-invalid.ng-touched {
     color:var(--secondary-text-color);
 }
 
-.form-button {
-    border: none;
-    width: 15%;
-    margin: 20px 0 0 0;
-    border-radius: 5px;
-    color: var(--secondary-text-color);
-    padding: 7px 0 7px 0;
-    transition: 0.5s;
-    font-weight: 500;
-    cursor: pointer;
+input.ng-valid.ng-touched {
+    border: 2px solid var(--primary-color);
+}
+
+input.ng-invalid.ng-touched {
+    border: 2px solid red;
 }
 
 .primary-btn {
-    background: var(--secondary-color);
-}
-
-.form-button:hover {
+    border: none;
+    margin: 20px 10% 0 10%;
+    border-radius: 5px;
+    color: var(--secondary-text-color);
+    padding: 10px 0;
     transition: 0.5s;
+    font-weight: 500;
+    cursor: pointer;
     background: var(--primary-color);
-    border-color: var(--primary-color);
 }
 
-.input-group {
-    width: 30%;
-    margin: 1% 0 1% 0;
+.primary-btn:hover {
+    transition: 0.5s;
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
 }
 
 .form-row {
-    margin: 2% 0 2% 0;
+    width: 30%;
+    margin: 2% 0;
 }
 
-.title {
-    font-family: var(--primary-font);
-    font-size: 300%;
-    color: var(--secondary-text-color);
-    margin: 0 0 1% 0;
-}
-
-.sub-title {
-    font-family: var(--primary-font);
-    font-size: 150%;
-    color: var(--primary-text-color);
-    margin: 0 0 1% 0;
-}
-
-.avatar-icon {
-    width: 150px;
-    margin-right: 7%;
+.input-group {
+    margin: 1% 0;
 }
 
 .forgot-password {
     cursor: pointer;
     color: var(--secondary-text-color);
-    width: 30%;
-    text-align: end;
-}
-
-.alert {
-    width: 30%;
+    width: auto;
 }
 
 .alert-danger {
     background-color: red;
     border-color: red;
     color: white;
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .form-row {
+        width: 50%;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .form-row {
+        width: 65%;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    .form-row {
+        width: 90%;
+    }
+
+    .sign-in-row > img {
+        width: 200px;
+    }
+
 }
