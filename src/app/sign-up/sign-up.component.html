@@ -12,7 +12,7 @@
                 
                 <div class="row button-row">
     
-                    <button class="primary-btn sign-in-button"> <img src="../../assets/img/icons/login.svg" alt="User icon" width="30px"> Login</button>
+                    <button class="primary-btn sign-in-button"> <img src="../../assets/img/icons/login.svg" alt="User icon" width="30px">Entrar</button>
                     
                     <div class="button-separator"></div>
     
@@ -25,6 +25,9 @@
         </div>
 
         <div class="sign-up-column d-flex flex-column align-items-center">
+            
+            <p class="alert alert-danger" *ngIf="!authService.status.valid" > {{ authService.MsgError }} </p>
+            <p class="alert alert-danger" *ngIf="error !== null" > {{ error }} </p>
 
             <button class="photo-button">
                 <img src="../../assets/img/icons/user.svg" alt="Botão de escolher foto">
@@ -110,12 +113,12 @@
                     </div>
                 
                     <div class="message-contianer" *ngIf="email.invalid && (email.dirty || email.touched)">
-                
+                    
                         <p *ngIf="email.errors.maxlength" class="form-text text-danger">O e-mail pode ter no máximo 120 caracteres.</p>
                         <p *ngIf="email.errors.required" class="form-text text-danger">O e-mail é obrigatório.</p>
                         <p *ngIf="email.errors.emailRegistered" class="form-text text-danger">E-mail já cadastrado.</p>
                         <p *ngIf="email.errors.pattern" class="form-text text-danger">Digite um e-mail válido.</p>
-                
+                    
                     </div>
 
                 </div>

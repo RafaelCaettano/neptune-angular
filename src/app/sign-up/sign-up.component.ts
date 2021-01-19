@@ -26,6 +26,7 @@ export class SignUpComponent implements OnInit {
 	authService: AuthService;
 	signUpForm: FormGroup;
 	registered: boolean;
+	error: string;
 
 	constructor(addressService: AddressService, userService: UserService, authService: AuthService, private fb: FormBuilder) { 
 		this.addressService = addressService;
@@ -35,6 +36,7 @@ export class SignUpComponent implements OnInit {
 
 	ngOnInit(): void {
 
+		this.error = null;
 		this.registered = false;
 		this.newSignUpForm();
 
@@ -77,7 +79,7 @@ export class SignUpComponent implements OnInit {
 						},
 		
 						(error) => {
-							
+							this.error = error;
 						}
 						
 					)
